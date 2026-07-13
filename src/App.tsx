@@ -29,6 +29,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { alerts as initialAlerts } from "./data/alerts";
 import { incidents } from "./data/incidents";
 import { workers } from "./data/workers";
+import WorksiteAnalysisPage from "./pages/WorksiteAnalysisPage";
 import type { Alert, Worker } from "./types";
 
 type IconName =
@@ -260,6 +261,7 @@ function App() {
 
   const selectedWorker = workers.find((worker) => worker.id === selectedWorkerId) ?? workers[0];
   const isHistoryPage = location.pathname.startsWith("/employee-history");
+  const isWorksitePage = location.pathname.startsWith("/worksite-analysis");
   const routeWorkerId = location.pathname.split("/")[2];
   const historyWorker = workers.find((worker) => worker.id === routeWorkerId) ?? selectedWorker;
   const visibleWorkers = useMemo(() => workers.filter((worker) => {
@@ -286,11 +288,11 @@ function App() {
 
         <nav className="nav-menu" aria-label="Main navigation">
           <span className="nav-label">Workspace</span>
-          <Button disableRipple className={`nav-item ${!isHistoryPage ? "active" : ""}`} onClick={() => navigate("/")}><Icon name="dashboard" /><span>Overview</span></Button>
+          <Button disableRipple className={`nav-item ${!isHistoryPage && !isWorksitePage ? "active" : ""}`} onClick={() => navigate("/")}><Icon name="dashboard" /><span>Overview</span></Button>
           <Button disableRipple className={`nav-item ${isHistoryPage ? "active" : ""}`} onClick={() => navigate(`/employee-history/${selectedWorkerId}`)}><Icon name="team" /><span>Employee history</span><span className="nav-count">{workers.length}</span></Button>
           <Button disableRipple className="nav-item"><Icon name="alert" /><span>Incidents</span><span className="notification-dot" /></Button>
           <span className="nav-label secondary">Management</span>
-          <Button disableRipple className="nav-item"><Icon name="activity" /><span>Analytics</span></Button>
+          <Button disableRipple className={`nav-item ${isWorksitePage ? "active" : ""}`} onClick={() => navigate("/worksite-analysis")}><Icon name="activity" /><span>Worksite analysis</span></Button>
           <Button disableRipple className="nav-item"><Icon name="helmet" /><span>PPE Compliance</span></Button>
           <Button disableRipple className="nav-item"><Icon name="settings" /><span>Settings</span></Button>
         </nav>
@@ -318,6 +320,8 @@ function App() {
               navigate(`/employee-history/${id}`);
             }}
           />
+        ) : isWorksitePage ? (
+          <WorksiteAnalysisPage />
         ) : (
         <>
         <header className="topbar">
