@@ -108,7 +108,6 @@ button { cursor: pointer; }
 .sidebar.collapsed .sidebar-profile > .asset-icon { display: none; }
 .sidebar.collapsed .nav-menu { width: 100%; margin-top: 22px; }
 .sidebar.collapsed .nav-item.MuiButton-root { height: 43px; padding: 0; justify-content: center; }
-.sidebar.collapsed .nav-label.secondary { display: block; height: 1px; width: 27px; padding: 0; margin: 16px auto 10px; background: rgba(255,255,255,.08); color: transparent; }
 .sidebar.collapsed .sidebar-profile { margin-top: auto; padding: 17px 0 0; }
 .brand { width: 100%; display: flex; align-items: center; gap: 11px; padding: 0 8px; }
 .brand-mark { width: 38px; height: 38px; display: grid; place-items: center; color: #172033; background: #7daeff; border-radius: 11px; box-shadow: 0 6px 16px rgba(55, 117, 220, .3); }
@@ -143,7 +142,6 @@ button { cursor: pointer; }
 :root:not([data-theme="dark"]) .sidebar { color: var(--ink); border-right: 1px solid var(--line); box-shadow: 5px 0 20px rgba(25,57,46,.035); }
 :root:not([data-theme="dark"]) .sidebar-toggle.MuiIconButton-root { color: var(--text-secondary); background: var(--surface-muted); border-color: var(--line); }
 :root:not([data-theme="dark"]) .sidebar-toggle.MuiIconButton-root:hover { color: var(--blue); background: var(--blue-soft); border-color: #bfd2ee; }
-:root:not([data-theme="dark"]) .sidebar.collapsed .nav-label.secondary { background: var(--line); }
 :root:not([data-theme="dark"]) .brand-mark { color: #ffffff; }
 :root:not([data-theme="dark"]) .brand-text { color: var(--ink); }
 :root:not([data-theme="dark"]) .nav-label { color: var(--text-tertiary); }
@@ -647,11 +645,9 @@ h1 { margin: 0; font-size: 29px; line-height: 1.2;  }
   .nav-menu { width: 100%; margin-top: 38px; }
   .sidebar.collapsed .nav-menu { margin-top: 38px; }
   .sidebar .nav-item.MuiButton-root { height: 43px; padding: 0; justify-content: center; }
-  .nav-label.secondary { display: block; height: 1px; width: 27px; padding: 0; margin: 16px auto 10px; background: rgba(255,255,255,.08); color: transparent; }
   .sidebar-profile { margin-top: auto; padding: 17px 0 0; }
   .main-content { width: calc(100% - 72px); margin-left: 72px; }
   .sidebar { overflow-x: hidden; overflow-y: auto; }
-  :root:not([data-theme="dark"]) .sidebar:not(.mobile-open) .nav-label.secondary { background: var(--line); }
 }
 
 /* Tablet layout */
