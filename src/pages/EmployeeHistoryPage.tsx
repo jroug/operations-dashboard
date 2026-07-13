@@ -1,12 +1,11 @@
-import { Button, Chip, IconButton } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import BiometricsPanel from "../components/employee-history/BiometricsPanel";
 import ComplianceTrendPanel from "../components/employee-history/ComplianceTrendPanel";
 import EmployeeProfileCard from "../components/employee-history/EmployeeProfileCard";
+import EmployeeHistoryHeader from "../components/employee-history/EmployeeHistoryHeader";
 import EmployeeStatsGrid from "../components/employee-history/EmployeeStatsGrid";
 import IncidentHistoryPanel from "../components/employee-history/IncidentHistoryPanel";
 import PPEStatusPanel from "../components/employee-history/PPEStatusPanel";
-import Icon from "../components/Icon";
 import { alerts as initialAlerts } from "../data/alerts";
 import { incidents } from "../data/incidents";
 import { workers } from "../data/workers";
@@ -55,17 +54,7 @@ export default function EmployeeHistoryPage() {
 
   return (
     <div className="history-page">
-      <header className="history-topbar">
-        <div className="history-title-wrap">
-          <Button className="back-button" onClick={() => navigate("/")}><span className="back-chevron"><Icon name="chevron" size={18} /></span></Button>
-          <div><p className="eyebrow">Workforce / Employee history</p><h1>Employee history</h1></div>
-        </div>
-        <div className="topbar-actions">
-          <Chip className="live-status" icon={<span className="pulse-dot" />} label="Live data" variant="outlined" />
-          <IconButton className="icon-button" aria-label="Notifications"><Icon name="bell" /><span className="bell-badge">3</span></IconButton>
-          <div className="mobile-profile profile-avatar">AK</div>
-        </div>
-      </header>
+      <EmployeeHistoryHeader notificationCount={3} onBack={() => navigate("/")} />
 
       <EmployeeProfileCard worker={worker} workers={workers} onWorkerChange={handleWorkerChange} />
       <EmployeeStatsGrid worker={worker} recordedEventCount={workerAlerts.length + workerIncidents.length} />
