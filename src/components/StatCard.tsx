@@ -1,3 +1,4 @@
+/** Provides the shared visual contract for summary metrics across all dashboard pages. */
 import type { ElementType, ReactElement, ReactNode } from "react";
 import { Card } from "@mui/material";
 import Icon from "./Icon";

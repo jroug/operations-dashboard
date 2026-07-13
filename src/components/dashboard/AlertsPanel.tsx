@@ -1,3 +1,4 @@
+/** Displays active dashboard alerts and exposes acknowledgement actions to the page owner. */
 import { Button, Chip, Paper } from "@mui/material";
 import type { Alert } from "../../types";
 import Icon from "../Icon";

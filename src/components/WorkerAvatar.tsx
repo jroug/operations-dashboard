@@ -1,3 +1,4 @@
+/** Generates a role-colored worker avatar from the worker's initials. */
 
 import {
   Avatar

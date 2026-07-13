@@ -1,3 +1,4 @@
+/** Resolves shared icon names to their extracted SVG assets. */
 import {
   activityWaveIcon,
   alertTriangleIcon,

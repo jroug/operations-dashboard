@@ -1,3 +1,4 @@
+/** Mock telemetry and detection feed for the robot-monitoring preview. */
 import type { Robot } from "../types";
 
 export const robot: Robot = {

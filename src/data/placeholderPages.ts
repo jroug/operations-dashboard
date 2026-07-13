@@ -1,3 +1,4 @@
+/** Shared copy and summary-card configuration for the static preview routes. */
 import { incidents } from "./incidents";
 import { robot } from "./robot";
 import { workers } from "./workers";

@@ -1,3 +1,4 @@
+/** Charts heart-rate and fatigue trends for the selected worker's current shift. */
 import { Paper } from "@mui/material";
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 

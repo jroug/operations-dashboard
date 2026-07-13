@@ -1,3 +1,4 @@
+/** Mock workforce roster with safety, biometric, device, and PPE status data. */
 import type { Worker } from "../types";
 
 export const workers: Worker[] = [

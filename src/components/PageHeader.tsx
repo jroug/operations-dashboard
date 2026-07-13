@@ -1,3 +1,4 @@
+/** Renders the shared page header, route-specific actions, and local notification panel. */
 import { useState, type ReactNode } from "react";
 import { Button, Chip, IconButton, Popover } from "@mui/material";
 import Icon from "./Icon";
@@ -41,6 +42,7 @@ export default function PageHeader({ variant, eyebrow, title, notificationCount,
   const [readNotificationIds, setReadNotificationIds] = useState<string[]>([]);
   const classes = variantClasses[variant];
   const heading = <div><p className="eyebrow">{eyebrow}</p><h1>{title}</h1></div>;
+  // Keep the mock feed aligned with the configured badge count and derive unread state locally.
   const notifications = headerNotifications.slice(0, notificationCount);
   const unreadCount = notifications.filter((notification) => !readNotificationIds.includes(notification.id)).length;
 

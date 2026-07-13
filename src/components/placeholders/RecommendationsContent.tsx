@@ -1,3 +1,4 @@
+/** Presents static AI-generated training recommendations and projected impact. */
 import { Button, Chip, Paper } from "@mui/material";
 import { workers } from "../../data/workers";
 import PanelHeading from "./PanelHeading";

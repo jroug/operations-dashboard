@@ -1,3 +1,4 @@
+/** Compares mock workforce safety performance across operational roles. */
 import { Button, Paper } from "@mui/material";
 import MetricBar from "./MetricBar";
 import PanelHeading from "./PanelHeading";

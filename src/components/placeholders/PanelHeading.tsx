@@ -1,3 +1,4 @@
+/** Provides a consistent heading and optional control area for placeholder panels. */
 import { Chip } from "@mui/material";
 
 interface PanelHeadingProps {

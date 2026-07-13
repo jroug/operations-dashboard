@@ -1,3 +1,4 @@
+/** Presents the selected worker's headline safety and biometric statistics. */
 import type { Worker } from "../../types";
 import StatCard from "../StatCard";
 

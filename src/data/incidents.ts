@@ -1,3 +1,4 @@
+/** Mock historical incidents with the operational conditions recorded at each event. */
 import type { Incident } from "../types";
 
 export const incidents: Incident[] = [

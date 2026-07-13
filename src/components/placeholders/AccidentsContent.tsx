@@ -1,3 +1,4 @@
+/** Renders the static accident register and environmental condition summary. */
 import { Button, Chip, Paper } from "@mui/material";
 import { incidents } from "../../data/incidents";
 import { workers } from "../../data/workers";

@@ -1,3 +1,4 @@
+/** View models shared by the worksite analysis page and its chart panels. */
 export type SiteName = "All sites" | "Site A" | "Site B" | "Site C";
 
 export interface WorksiteMetric {

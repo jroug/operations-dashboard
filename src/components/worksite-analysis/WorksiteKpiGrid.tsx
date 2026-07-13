@@ -1,3 +1,4 @@
+/** Presents KPIs derived from the currently selected worksite scope. */
 import StatCard from "../StatCard";
 import SiteIcon from "./SiteIcon";
 import type { SiteName } from "./types";

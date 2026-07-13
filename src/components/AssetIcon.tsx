@@ -1,3 +1,4 @@
+/** Renders trusted SVG asset markup at a caller-defined size while preserving currentColor. */
 interface AssetIconProps {
   source: string;
   size: number;

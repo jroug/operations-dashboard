@@ -1,3 +1,4 @@
+/** Maps placeholder-page summary configuration onto the shared StatCard grid. */
 import type { PlaceholderSummaryCard } from "../../types/placeholderPages";
 import StatCard from "../StatCard";
 import PageIcon from "./PageIcon";

@@ -1,3 +1,4 @@
+/** Resolves placeholder-page icon names to shared extracted SVG assets. */
 import {
   alertTriangleIcon,
   arrowRightIcon,

@@ -1,3 +1,4 @@
+/** Presents static robot telemetry, detections, patrol progress, and camera status. */
 import { Button, Chip, Paper } from "@mui/material";
 import { robot } from "../../data/robot";
 import PageIcon from "./PageIcon";

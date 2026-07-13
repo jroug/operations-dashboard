@@ -1,3 +1,4 @@
+/** Composes the operational overview and owns its filtering and alert state. */
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AlertsPanel, { type DashboardAlert } from "../components/dashboard/AlertsPanel";
@@ -24,18 +25,21 @@ export default function DashboardPage() {
   const [acknowledged, setAcknowledged] = useState<string[]>([]);
 
   const selectedWorker = workers.find((worker) => worker.id === selectedWorkerId) ?? workers[0];
+  // Search and compliance filters are combined here so the table remains presentational.
   const visibleWorkers = useMemo(() => workers.filter((worker) => {
     const matchesQuery = `${worker.name} ${worker.role} ${worker.site} ${worker.zone}`.toLowerCase().includes(query.toLowerCase());
     const matchesStatus = status === "all" || (status === "compliant" ? worker.compliant : !worker.compliant);
     return matchesQuery && matchesStatus;
   }), [query, status]);
 
+  // Adapt the worker record into the view models consumed by the detail and alert panels.
   const ppeItems: PpeItem[] = Object.entries(selectedWorker.ppe).map(([name, active]) => ({ name, active }));
   const openAlerts = initialAlerts.filter((alert) => !acknowledged.includes(alert.id));
   const dashboardAlerts: DashboardAlert[] = openAlerts.map((alert) => ({
     ...alert,
     workerName: workers.find((worker) => worker.id === alert.workerId)?.name,
   }));
+  // Aggregate workforce compliance and remaining alert severities for the summary cards.
   const compliance = Math.round(workers.reduce((sum, worker) => sum + worker.complianceScore, 0) / workers.length);
   const highPriorityAlertCount = openAlerts.filter((alert) => alert.severity === "high").length;
   const criticalAlertCount = openAlerts.filter((alert) => alert.severity === "critical").length;

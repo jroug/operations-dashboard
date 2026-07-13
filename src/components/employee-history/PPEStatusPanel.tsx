@@ -1,3 +1,4 @@
+/** Lists detected PPE equipment and wearable battery status for the selected worker. */
 import { Paper } from "@mui/material";
 import type { Worker } from "../../types";
 import Icon from "../Icon";

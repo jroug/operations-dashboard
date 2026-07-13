@@ -1,3 +1,4 @@
+/** Renders the searchable workforce table and delegates all state changes to its parent page. */
 import type { MouseEvent } from "react";
 import {
   Button,
@@ -33,6 +34,7 @@ interface WorkforceTableProps {
 
 export default function WorkforceTable({ workers, selectedWorkerId, query, status, onQueryChange, onStatusChange, onWorkerSelect, onViewHistory }: WorkforceTableProps) {
   const handleViewHistory = (event: MouseEvent<HTMLButtonElement>, workerId: string) => {
+    // The dedicated action navigates without also selecting the containing table row.
     event.stopPropagation();
     onViewHistory(workerId);
   };

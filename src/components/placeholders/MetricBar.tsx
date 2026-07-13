@@ -1,3 +1,4 @@
+/** Renders a labeled progress metric shared by placeholder analysis panels. */
 interface MetricBarProps {
   label: string;
   value: number;

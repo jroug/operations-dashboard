@@ -1,3 +1,4 @@
+/** Renders responsive primary navigation for expanded, compact, and mobile-drawer states. */
 import { Box, Button, IconButton } from "@mui/material";
 import Icon from "./Icon";
 import { NavLink, useMatch } from "react-router-dom";
@@ -12,6 +13,7 @@ interface SidebarProps {
 }
 
 export default function Sidebar({ selectedWorkerId, collapsed, mobileOpen, onToggle, onNavigate }: SidebarProps) {
+    // Match the route family because the link target can reference a different selected worker.
     const employeeHistoryMatch = useMatch("/employee-history/*");
 
     return (

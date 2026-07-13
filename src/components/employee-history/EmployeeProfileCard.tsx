@@ -1,3 +1,4 @@
+/** Displays the active worker profile and provides employee switching controls. */
 import { Chip, FormControl, MenuItem, Paper, Select } from "@mui/material";
 import type { Worker } from "../../types";
 import Icon from "../Icon";

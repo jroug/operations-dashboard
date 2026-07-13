@@ -1,3 +1,4 @@
+/** Core domain models used by the dashboard's mock operational datasets. */
 export interface Worker {
   id: string;
   name: string;

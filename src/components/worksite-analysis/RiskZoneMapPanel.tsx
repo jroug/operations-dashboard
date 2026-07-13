@@ -1,3 +1,4 @@
+/** Positions operational zones on a schematic map using their configured risk level. */
 import { Paper } from "@mui/material";
 import type { RiskZone } from "./types";
 

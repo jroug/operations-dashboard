@@ -1,3 +1,4 @@
+/** Builds a worker-specific history view from route state and local safety datasets. */
 import { useNavigate, useParams } from "react-router-dom";
 import BiometricsPanel from "../components/employee-history/BiometricsPanel";
 import ComplianceTrendPanel from "../components/employee-history/ComplianceTrendPanel";
@@ -37,10 +38,12 @@ export default function EmployeeHistoryPage() {
 
   const workerAlerts = initialAlerts.filter((alert) => alert.workerId === worker.id);
   const workerIncidents = incidents.filter((incident) => incident.workerId === worker.id);
+  // Rebase the shared chart fixtures around the selected worker while preserving realistic bounds.
   const adjustedCompliance = complianceTrend.map((point, index) => ({
     ...point,
     score: Math.max(35, Math.min(100, point.score + worker.complianceScore - 72 + (index === 5 ? 0 : index % 2))),
   }));
+  // Biometric fixtures are similarly adjusted so changing workers updates both series coherently.
   const adjustedBiometrics = biometricTrend.map((point, index) => ({
     ...point,
     heartRate: point.heartRate + worker.heartRate - 96,

@@ -1,3 +1,4 @@
+/** Owns worksite selection and derives all site-scoped analytics for its panels. */
 import { useMemo, useState } from "react";
 import { Button, FormControl, MenuItem, Select } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -45,6 +46,7 @@ export default function WorksiteAnalysisPage() {
   const navigate = useNavigate();
   const [selectedSite, setSelectedSite] = useState<SiteName>("All sites");
 
+  // Apply the selected site consistently across workers, alerts, zones, and summary metrics.
   const visibleSites = selectedSite === "All sites" ? siteMetrics : siteMetrics.filter((site) => site.site === selectedSite);
   const filteredWorkers = selectedSite === "All sites" ? workers : workers.filter((worker) => worker.site === selectedSite);
   const filteredWorkerIds = new Set(filteredWorkers.map((worker) => worker.id));
@@ -54,6 +56,7 @@ export default function WorksiteAnalysisPage() {
   const connectedWorkerCount = filteredWorkers.filter((worker) => worker.connected).length;
   const criticalAlertCount = filteredAlerts.filter((alert) => alert.severity === "critical").length;
 
+  // Recharts receives a compact comparison model rather than the full operational record.
   const comparisonData = useMemo(() => visibleSites.map((site) => ({
     name: site.site.replace("Site ", "Site "),
     compliance: site.compliance,

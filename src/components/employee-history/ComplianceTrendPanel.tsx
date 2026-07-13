@@ -1,3 +1,4 @@
+/** Visualizes the selected worker's six-month PPE compliance trend. */
 import { Chip, Paper } from "@mui/material";
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 

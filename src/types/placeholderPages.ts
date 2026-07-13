@@ -1,3 +1,4 @@
+/** Contracts for configuring and rendering the static preview routes. */
 export type PlaceholderPageType = "role-analysis" | "accidents" | "robot-monitoring" | "ai-recommendations";
 
 export type PageIconName = "alert" | "arrow" | "battery" | "bell" | "brain" | "chart" | "check" | "robot" | "team" | "trend";

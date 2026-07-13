@@ -1,3 +1,4 @@
+/** Exposes SVG source strings through Vite's raw-asset imports for the shared icon renderers. */
 export { default as activityWaveIcon } from "./activity-wave.svg?raw";
 export { default as alertTriangleIcon } from "./alert-triangle.svg?raw";
 export { default as arrowRightIcon } from "./arrow-right.svg?raw";

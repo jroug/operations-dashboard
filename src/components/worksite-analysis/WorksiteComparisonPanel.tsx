@@ -1,3 +1,4 @@
+/** Renders selectable site rows with workforce, compliance, alert, and risk metrics. */
 import { Chip, Paper } from "@mui/material";
 import SiteIcon from "./SiteIcon";
 import type { SiteName, WorksiteMetric } from "./types";

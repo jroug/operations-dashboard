@@ -1,3 +1,4 @@
+/** Bootstraps the React application with strict-mode checks and browser routing. */
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'

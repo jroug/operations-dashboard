@@ -1,3 +1,4 @@
+/** Centralizes Material UI tokens and component defaults used across the dashboard. */
 import { createTheme } from "@mui/material";
 
 const theme = createTheme({

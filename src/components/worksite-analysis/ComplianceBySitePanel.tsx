@@ -1,3 +1,4 @@
+/** Compares site compliance scores against the accepted target. */
 import { Paper } from "@mui/material";
 import { Bar, BarChart, CartesianGrid, Cell, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import type { ComplianceComparisonPoint } from "./types";

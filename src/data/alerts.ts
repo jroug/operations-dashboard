@@ -1,3 +1,4 @@
+/** Mock live alerts emitted by worker wearables and worksite safety systems. */
 import type { Alert } from "../types";
 
 export const alerts: Alert[] = [

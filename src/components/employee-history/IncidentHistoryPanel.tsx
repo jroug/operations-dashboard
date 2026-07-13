@@ -1,3 +1,4 @@
+/** Combines current alerts and historical incidents into a worker activity timeline. */
 import { Button, Chip, Paper } from "@mui/material";
 import type { Alert, Incident, Worker } from "../../types";
 import Icon from "../Icon";

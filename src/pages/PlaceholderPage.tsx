@@ -1,3 +1,4 @@
+/** Selects and composes the appropriate static preview route from shared configuration. */
 import { Button, Chip } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import AccidentsContent from "../components/placeholders/AccidentsContent";

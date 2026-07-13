@@ -1,3 +1,4 @@
+/** Presents the dashboard's workforce, compliance, and alert summary metrics. */
 import StatCard from "../StatCard";
 
 interface KeyMetricsProps {

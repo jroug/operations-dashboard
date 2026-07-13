@@ -1,3 +1,4 @@
+/** Summarizes active worksite alerts by severity and exposes alert-center navigation. */
 import { Button, Paper } from "@mui/material";
 import SiteIcon from "./SiteIcon";
 import type { AlertSeverityMetric } from "./types";

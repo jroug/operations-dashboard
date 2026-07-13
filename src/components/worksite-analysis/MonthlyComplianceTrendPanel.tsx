@@ -1,3 +1,4 @@
+/** Charts six-month compliance series for all sites or the selected site. */
 import { Chip, Paper } from "@mui/material";
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import type { MonthlyCompliancePoint, SiteName } from "./types";
@@ -19,6 +20,7 @@ export default function MonthlyComplianceTrendPanel({ selectedSite, data }: Mont
             <YAxis domain={[40, 100]} axisLine={false} tickLine={false} tick={{ fill: "#89958f", fontSize: 11 }} tickFormatter={(value) => `${value}%`} />
             <Tooltip formatter={(value) => [`${value}%`, "Compliance"]} contentStyle={{ borderRadius: 10, border: "1px solid #e2e8e5", boxShadow: "0 10px 25px rgba(20,40,32,.09)", fontSize: 12 }} />
             <Legend iconType="circle" iconSize={7} wrapperStyle={{ fontSize: 11, color: "#718078" }} />
+            {/* Rendering only relevant series keeps single-site comparisons focused. */}
             {(selectedSite === "All sites" || selectedSite === "Site A") && <Line type="monotone" dataKey="siteA" name="Site A" stroke="#397bde" strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />}
             {(selectedSite === "All sites" || selectedSite === "Site B") && <Line type="monotone" dataKey="siteB" name="Site B" stroke="#7557c5" strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />}
             {(selectedSite === "All sites" || selectedSite === "Site C") && <Line type="monotone" dataKey="siteC" name="Site C" stroke="#df725c" strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />}

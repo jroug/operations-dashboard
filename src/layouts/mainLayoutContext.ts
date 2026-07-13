@@ -1,3 +1,4 @@
+/** Provides typed access to state owned by the persistent main layout. */
 import { useOutletContext } from "react-router-dom";
 
 export interface MainLayoutContext {
@@ -6,5 +7,6 @@ export interface MainLayoutContext {
 }
 
 export function useMainLayoutContext() {
+  // Centralizing the cast keeps route components aligned with the Outlet contract.
   return useOutletContext<MainLayoutContext>();
 }

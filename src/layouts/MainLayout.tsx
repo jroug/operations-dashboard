@@ -1,3 +1,4 @@
+/** Owns persistent navigation state and frames every routed dashboard page. */
 import { useState } from "react";
 import { Box, IconButton } from "@mui/material";
 import { Outlet } from "react-router-dom";
@@ -29,6 +30,7 @@ export default function MainLayout() {
         onNavigate={() => setMobileSidebarOpen(false)}
       />
       <Box component="main" className={`main-content${sidebarCollapsed ? " sidebar-collapsed" : ""}`}>
+        {/* Child routes share worker selection without introducing application-wide state. */}
         <Outlet context={{ selectedWorkerId, setSelectedWorkerId } satisfies MainLayoutContext} />
       </Box>
     </Box>

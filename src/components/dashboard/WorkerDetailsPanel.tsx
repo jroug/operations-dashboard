@@ -1,3 +1,4 @@
+/** Summarizes PPE compliance, equipment state, biometrics, and connectivity for one worker. */
 import type { CSSProperties } from "react";
 import { Chip, Paper } from "@mui/material";
 import type { Worker } from "../../types";
