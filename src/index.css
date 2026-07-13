@@ -507,7 +507,7 @@ h1 { margin: 0; font-size: 29px; line-height: 1.2; letter-spacing: -.7px; }
 @media (max-width: 900px) {
   .sidebar { width: 72px; padding: 26px 12px 18px; align-items: center; }
   .brand { padding: 0; }
-  .brand-text, .nav-label, .nav-item span, .system-card, .sidebar-profile > span:not(.profile-avatar), .sidebar-profile > svg { display: none; }
+  .brand-text, .nav-label, .nav-item span, .system-card, .sidebar-profile > span:not(.profile-avatar), .sidebar-profile > svg, .sidebar-profile > .asset-icon { display: none; }
   .nav-menu { width: 100%; margin-top: 38px; }
   .sidebar .nav-item.MuiButton-root { height: 43px; padding: 0; justify-content: center; }
   .nav-label.secondary { display: block; height: 1px; width: 27px; padding: 0; margin: 16px auto 10px; background: rgba(255,255,255,.08); color: transparent; }
