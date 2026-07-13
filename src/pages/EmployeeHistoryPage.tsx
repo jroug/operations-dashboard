@@ -8,27 +8,10 @@ import IncidentHistoryPanel from "../components/employee-history/IncidentHistory
 import PPEStatusPanel from "../components/employee-history/PPEStatusPanel";
 import PageHeader from "../components/PageHeader";
 import { alerts as initialAlerts } from "../data/alerts";
+import { biometricTrendsByWorker, complianceTrendsByWorker } from "../data/employeeHistory";
 import { incidents } from "../data/incidents";
 import { workers } from "../data/workers";
 import { useMainLayoutContext } from "../layouts/mainLayoutContext";
-
-const complianceTrend = [
-  { month: "Feb", score: 64 },
-  { month: "Mar", score: 69 },
-  { month: "Apr", score: 67 },
-  { month: "May", score: 73 },
-  { month: "Jun", score: 76 },
-  { month: "Jul", score: 72 },
-];
-
-const biometricTrend = [
-  { time: "06:00", heartRate: 72, fatigue: 18 },
-  { time: "07:00", heartRate: 78, fatigue: 22 },
-  { time: "08:00", heartRate: 85, fatigue: 31 },
-  { time: "09:00", heartRate: 96, fatigue: 46 },
-  { time: "10:00", heartRate: 89, fatigue: 52 },
-  { time: "11:00", heartRate: 93, fatigue: 58 },
-];
 
 export default function EmployeeHistoryPage() {
   const navigate = useNavigate();
@@ -38,17 +21,8 @@ export default function EmployeeHistoryPage() {
 
   const workerAlerts = initialAlerts.filter((alert) => alert.workerId === worker.id);
   const workerIncidents = incidents.filter((incident) => incident.workerId === worker.id);
-  // Rebase the shared chart fixtures around the selected worker while preserving realistic bounds.
-  const adjustedCompliance = complianceTrend.map((point, index) => ({
-    ...point,
-    score: Math.max(35, Math.min(100, point.score + worker.complianceScore - 72 + (index === 5 ? 0 : index % 2))),
-  }));
-  // Biometric fixtures are similarly adjusted so changing workers updates both series coherently.
-  const adjustedBiometrics = biometricTrend.map((point, index) => ({
-    ...point,
-    heartRate: point.heartRate + worker.heartRate - 96,
-    fatigue: Math.max(8, Math.min(95, point.fatigue + (worker.fatigue === "high" ? 24 : worker.fatigue === "low" ? -12 : 0) + index)),
-  }));
+  const complianceTrend = complianceTrendsByWorker[worker.id];
+  const biometricTrend = biometricTrendsByWorker[worker.id];
 
   const handleWorkerChange = (id: string) => {
     setSelectedWorkerId(id);
@@ -63,9 +37,9 @@ export default function EmployeeHistoryPage() {
       <EmployeeStatsGrid worker={worker} recordedEventCount={workerAlerts.length + workerIncidents.length} />
 
       <section className="history-content-grid">
-        <ComplianceTrendPanel complianceScore={worker.complianceScore} data={adjustedCompliance} />
+        <ComplianceTrendPanel complianceScore={worker.complianceScore} data={complianceTrend} />
         <PPEStatusPanel worker={worker} />
-        <BiometricsPanel data={adjustedBiometrics} />
+        <BiometricsPanel data={biometricTrend} />
         <IncidentHistoryPanel worker={worker} alerts={workerAlerts} incidents={workerIncidents} />
       </section>
     </div>

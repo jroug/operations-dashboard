@@ -57,6 +57,17 @@ export interface Robot {
   }[];
 }
 
+export interface ComplianceTrendPoint {
+  month: string;
+  score: number;
+}
+
+export interface BiometricTrendPoint {
+  time: string;
+  heartRate: number;
+  fatigue: number;
+}
+
 
 export type IconName =
   | "activity"

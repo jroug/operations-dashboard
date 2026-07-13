@@ -1,12 +1,7 @@
 /** Charts heart-rate and fatigue trends for the selected worker's current shift. */
 import { Paper } from "@mui/material";
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
-
-interface BiometricTrendPoint {
-  time: string;
-  heartRate: number;
-  fatigue: number;
-}
+import type { BiometricTrendPoint } from "../../types";
 
 interface BiometricsPanelProps {
   data: BiometricTrendPoint[];
