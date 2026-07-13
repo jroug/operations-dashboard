@@ -1,10 +1,11 @@
+import { Button, Chip } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import AccidentsContent from "../components/placeholders/AccidentsContent";
-import PlaceholderHeader from "../components/placeholders/PlaceholderHeader";
 import PlaceholderSummaryGrid from "../components/placeholders/PlaceholderSummaryGrid";
 import RecommendationsContent from "../components/placeholders/RecommendationsContent";
 import RobotMonitoringContent from "../components/placeholders/RobotMonitoringContent";
 import RoleAnalysisContent from "../components/placeholders/RoleAnalysisContent";
+import PageHeader from "../components/PageHeader";
 import { placeholderPageConfig } from "../data/placeholderPages";
 import type { PlaceholderPageType } from "../types/placeholderPages";
 
@@ -18,7 +19,14 @@ export default function PlaceholderPage({ page }: PlaceholderPageProps) {
 
   return (
     <div className="placeholder-page">
-      <PlaceholderHeader config={config} notificationCount={3} onBack={() => navigate("/")} />
+      <PageHeader
+        variant="placeholder"
+        eyebrow={config.eyebrow}
+        title={config.title}
+        notificationCount={3}
+        onBack={() => navigate("/")}
+        actions={<><Chip className="preview-chip" label="Static preview" size="small" /><Button disabled variant="outlined">{config.action}</Button></>}
+      />
       <p className="placeholder-description">{config.description}</p>
       <PlaceholderSummaryGrid cards={config.cards} />
       <section className="placeholder-content-grid">

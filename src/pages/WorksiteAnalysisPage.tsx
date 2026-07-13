@@ -1,11 +1,13 @@
 import { useMemo, useState } from "react";
+import { Button, FormControl, MenuItem, Select } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import PageHeader from "../components/PageHeader";
 import AlertsBySeverityPanel from "../components/worksite-analysis/AlertsBySeverityPanel";
 import ComplianceBySitePanel from "../components/worksite-analysis/ComplianceBySitePanel";
 import MonthlyComplianceTrendPanel from "../components/worksite-analysis/MonthlyComplianceTrendPanel";
 import RiskZoneMapPanel from "../components/worksite-analysis/RiskZoneMapPanel";
+import SiteIcon from "../components/worksite-analysis/SiteIcon";
 import WorksiteComparisonPanel from "../components/worksite-analysis/WorksiteComparisonPanel";
-import WorksiteHeader from "../components/worksite-analysis/WorksiteHeader";
 import WorksiteKpiGrid from "../components/worksite-analysis/WorksiteKpiGrid";
 import type { AlertSeverityMetric, MonthlyCompliancePoint, RiskZone, SiteName, WorksiteMetric } from "../components/worksite-analysis/types";
 import { alerts } from "../data/alerts";
@@ -61,12 +63,21 @@ export default function WorksiteAnalysisPage() {
 
   return (
     <div className="worksite-page">
-      <WorksiteHeader
-        selectedSite={selectedSite}
-        sites={siteMetrics.map((site) => site.site)}
+      <PageHeader
+        variant="worksite"
+        eyebrow="Analytics / Worksites"
+        title="Analysis by worksite"
         notificationCount={3}
-        onSiteChange={setSelectedSite}
         onBack={() => navigate("/")}
+        actions={<>
+          <FormControl size="small" className="site-filter-select">
+            <Select value={selectedSite} onChange={(event) => setSelectedSite(event.target.value as SiteName)}>
+              <MenuItem value="All sites">All worksites</MenuItem>
+              {siteMetrics.map((site) => <MenuItem value={site.site} key={site.site}>{site.site}</MenuItem>)}
+            </Select>
+          </FormControl>
+          <Button className="export-button" variant="outlined" startIcon={<SiteIcon name="download" size={17} />}>Export report</Button>
+        </>}
       />
       <WorksiteKpiGrid
         selectedSite={selectedSite}

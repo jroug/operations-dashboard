@@ -1,14 +1,20 @@
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AlertsPanel, { type DashboardAlert } from "../components/dashboard/AlertsPanel";
-import DashboardHeader from "../components/dashboard/DashboardHeader";
 import KeyMetrics from "../components/dashboard/KeyMetrics";
 import WorkforceTable, { type WorkforceStatusFilter } from "../components/dashboard/WorkforceTable";
 import WorkerDetailsPanel, { type PpeItem } from "../components/dashboard/WorkerDetailsPanel";
+import PageHeader from "../components/PageHeader";
 import { alerts as initialAlerts } from "../data/alerts";
 import { workers } from "../data/workers";
 import { useMainLayoutContext } from "../layouts/mainLayoutContext";
 import type { Alert } from "../types";
+
+const currentDate = new Intl.DateTimeFormat("en-GB", {
+  weekday: "long",
+  day: "numeric",
+  month: "long",
+}).format(new Date());
 
 export default function DashboardPage() {
   const navigate = useNavigate();
@@ -37,7 +43,7 @@ export default function DashboardPage() {
   const acknowledgeAlert = (alert: Alert) => setAcknowledged((current) => [...current, alert.id]);
 
   return <>
-    <DashboardHeader notificationCount={3} />
+    <PageHeader variant="dashboard" eyebrow={currentDate} title="Safety overview" notificationCount={3} statusLabel="Live monitoring" />
 
     <KeyMetrics
       workersOnSite={workers.length}

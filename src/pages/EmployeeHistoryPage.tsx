@@ -2,10 +2,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import BiometricsPanel from "../components/employee-history/BiometricsPanel";
 import ComplianceTrendPanel from "../components/employee-history/ComplianceTrendPanel";
 import EmployeeProfileCard from "../components/employee-history/EmployeeProfileCard";
-import EmployeeHistoryHeader from "../components/employee-history/EmployeeHistoryHeader";
 import EmployeeStatsGrid from "../components/employee-history/EmployeeStatsGrid";
 import IncidentHistoryPanel from "../components/employee-history/IncidentHistoryPanel";
 import PPEStatusPanel from "../components/employee-history/PPEStatusPanel";
+import PageHeader from "../components/PageHeader";
 import { alerts as initialAlerts } from "../data/alerts";
 import { incidents } from "../data/incidents";
 import { workers } from "../data/workers";
@@ -54,7 +54,7 @@ export default function EmployeeHistoryPage() {
 
   return (
     <div className="history-page">
-      <EmployeeHistoryHeader notificationCount={3} onBack={() => navigate("/")} />
+      <PageHeader variant="employee-history" eyebrow="Workforce / Employee history" title="Employee history" notificationCount={3} statusLabel="Live data" onBack={() => navigate("/")} />
 
       <EmployeeProfileCard worker={worker} workers={workers} onWorkerChange={handleWorkerChange} />
       <EmployeeStatsGrid worker={worker} recordedEventCount={workerAlerts.length + workerIncidents.length} />
