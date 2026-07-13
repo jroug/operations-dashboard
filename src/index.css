@@ -96,6 +96,28 @@ h1 { margin: 0; font-size: 29px; line-height: 1.2; letter-spacing: -.7px; }
 .icon-button.MuiIconButton-root { position: relative; width: 36px; height: 36px; display: grid; place-items: center; border: 1px solid #dfe7e2; background: white; color: #4e6158; border-radius: 9px; }
 .icon-button.MuiIconButton-root:hover { color: var(--blue); background: var(--blue-soft); border-color: #bfd2ee; }
 .bell-badge { position: absolute; top: -4px; right: -4px; width: 16px; height: 16px; display: grid; place-items: center; border: 2px solid #f4f7f5; border-radius: 50%; color: white; background: #df5750; font-size: 9px; font-weight: 700; }
+.notification-popover .MuiPaper-root { width: min(350px, calc(100vw - 28px)); margin-top: 8px; overflow: hidden; border: 1px solid #dfe6e2; border-radius: 12px; box-shadow: 0 18px 45px rgba(23,32,51,.16); }
+.notification-panel { background: white; }
+.notification-panel-head { min-height: 67px; padding: 13px 15px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 1px solid #edf0ee; }
+.notification-panel-head > div { display: flex; flex-direction: column; }
+.notification-panel-head strong { font: 700 14px Manrope, sans-serif; }
+.notification-panel-head small { margin-top: 3px; color: #89958f; font-size: 10px; }
+.notification-mark-all.MuiButton-root { min-width: 0; padding: 4px; color: var(--blue); font-size: 10px; text-transform: none; white-space: nowrap; }
+.notification-mark-all.Mui-disabled { color: #a6afaa; }
+.notification-list { padding: 5px; }
+.notification-item.MuiButton-root { position: relative; width: 100%; min-height: 70px; padding: 10px; display: grid; grid-template-columns: 34px minmax(0, 1fr) 7px; align-items: center; gap: 10px; color: #33443c; border-radius: 8px; text-align: left; text-transform: none; }
+.notification-item.MuiButton-root:hover { background: #f5f8fc; }
+.notification-item.unread { background: #f7faff; }
+.notification-item-icon { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 9px; }
+.notification-item-icon.critical { color: #c95650; background: #fff0ef; }
+.notification-item-icon.warning { color: #b87823; background: #fff4df; }
+.notification-item-icon.success { color: #25805f; background: #eaf7f1; }
+.notification-item-copy { min-width: 0; display: flex; flex-direction: column; }
+.notification-item-copy strong { overflow: hidden; font-size: 12px; white-space: nowrap; text-overflow: ellipsis; }
+.notification-item-copy > span { margin-top: 2px; overflow: hidden; color: #728079; font-size: 10px; white-space: nowrap; text-overflow: ellipsis; }
+.notification-item-copy small { margin-top: 4px; color: #98a39e; font-size: 9px; }
+.notification-unread-dot { width: 6px; height: 6px; background: var(--blue); border-radius: 50%; }
+.notification-empty { min-height: 110px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: #8b9892; font-size: 11px; }
 .mobile-profile { display: none; }
 
 /* Dashboard metrics and panels */
