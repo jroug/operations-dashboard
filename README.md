@@ -131,6 +131,7 @@ These pages are visually complete but intentionally remain mostly static, using 
 - Large page sections are separated into reusable, strongly typed React components.
 - Shared summary cards use a common `StatCard` component.
 - Inline SVGs were extracted into reusable assets under `src/assets/icons`.
+- Header notifications are interactive at the UI layer: users can open the notification panel and mark individual or all mock notifications as read. Their state is intentionally local and resets after a page reload because API integration and persistent storage are outside the assignment scope.
 - The color system follows a consistent semantic approach:
   - **Blue** → navigation & interactive elements
   - **Green** → success / compliant states
