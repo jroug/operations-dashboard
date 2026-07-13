@@ -1,16 +1,30 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, IconButton } from "@mui/material";
 import Icon from "./Icon";
 import { NavLink, useMatch } from "react-router-dom";
 import { workers } from "../data/workers";
 
-export default function Sidebar({ selectedWorkerId }: { selectedWorkerId: string }) {
+interface SidebarProps {
+    selectedWorkerId: string;
+    collapsed: boolean;
+    onToggle: () => void;
+}
+
+export default function Sidebar({ selectedWorkerId, collapsed, onToggle }: SidebarProps) {
     const employeeHistoryMatch = useMatch("/employee-history/*");
 
     return (
-        <Box component="aside" className="sidebar">
+        <Box component="aside" className={`sidebar${collapsed ? " collapsed" : ""}`}>
             <div className="brand">
                 <span className="brand-mark"><Icon name="shield" size={23} /></span>
                 <span className="brand-text"><strong>SafeWith</strong><b>Carmen</b></span>
+                <IconButton
+                    className="sidebar-toggle"
+                    onClick={onToggle}
+                    aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
+                    title={collapsed ? "Expand sidebar" : "Collapse sidebar"}
+                >
+                    <span className="sidebar-toggle-glyph"><span /></span>
+                </IconButton>
             </div>
 
             <nav className="nav-menu" aria-label="Main navigation">

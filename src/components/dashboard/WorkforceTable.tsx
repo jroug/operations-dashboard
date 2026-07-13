@@ -48,14 +48,23 @@ export default function WorkforceTable({ workers, selectedWorkerId, query, statu
       </div>
       <TableContainer className="worker-table-wrap">
         <Table className="worker-table">
-          <TableHead><TableRow><TableCell>Worker</TableCell><TableCell>Location</TableCell><TableCell>PPE status</TableCell><TableCell>Vitals</TableCell><TableCell>Device</TableCell><TableCell>Actions</TableCell></TableRow></TableHead>
+          <TableHead>
+            <TableRow>
+              <TableCell>Worker</TableCell>
+              <TableCell>Location</TableCell>
+              <TableCell>PPE status</TableCell>
+              <TableCell>Vitals</TableCell>
+              <TableCell>Device</TableCell>
+              <TableCell>Actions</TableCell>
+              </TableRow>
+            </TableHead>
           <TableBody>{workers.map((worker) => <TableRow hover key={worker.id} selected={selectedWorkerId === worker.id} className={selectedWorkerId === worker.id ? "selected" : ""} onClick={() => onWorkerSelect(worker.id)}>
             <TableCell><div className="worker-identity"><WorkerAvatar worker={worker} /><span><strong>{worker.name}</strong><small>{worker.role}</small></span></div></TableCell>
             <TableCell><div className="location-cell"><Icon name="location" size={15} /><span><strong>{worker.zone}</strong><small>{worker.site}</small></span></div></TableCell>
             <TableCell><Chip className={`status-badge ${worker.compliant ? "ok" : "warning"}`} size="small" icon={<span>{worker.compliant ? <Icon name="check" size={13} /> : "!"}</span>} label={worker.compliant ? "Compliant" : "Action needed"} /></TableCell>
             <TableCell><div className="vitals"><Icon name="heart" size={16} /><strong>{worker.heartRate}</strong><small>bpm</small></div></TableCell>
             <TableCell><div className={`device-status ${worker.connected ? "online" : "offline"}`}><span /><strong>{worker.battery}%</strong></div></TableCell>
-            <TableCell><Button className="history-action-button" size="small" variant="outlined" endIcon={<Icon name="chevron" size={14} />} onClick={(event) => handleViewHistory(event, worker.id)}>View History</Button></TableCell>
+            <TableCell><Button className="history-action-button" size="small" variant="outlined" endIcon={<Icon name="chevron" size={14} />} onClick={(event) => handleViewHistory(event, worker.id)}>History</Button></TableCell>
           </TableRow>)}</TableBody>
         </Table>
         {workers.length === 0 && <div className="empty-state">No workers match these filters.</div>}
