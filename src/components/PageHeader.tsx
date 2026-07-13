@@ -1,5 +1,5 @@
 /** Renders the shared page header, route-specific actions, and local notification panel. */
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { Button, Chip, IconButton, Popover } from "@mui/material";
 import Icon from "./Icon";
 
@@ -37,14 +37,34 @@ const headerNotifications: HeaderNotification[] = [
   { id: "report-ready", title: "Compliance report ready", description: "Monthly worksite summary", time: "20 min ago", icon: "check", tone: "success" },
 ];
 
+type ThemeMode = "light" | "dark";
+
+const THEME_STORAGE_KEY = "safewithcarmen-theme";
+
 export default function PageHeader({ variant, eyebrow, title, notificationCount, onBack, statusLabel, actions }: PageHeaderProps) {
   const [notificationAnchor, setNotificationAnchor] = useState<HTMLElement | null>(null);
   const [readNotificationIds, setReadNotificationIds] = useState<string[]>([]);
+  const [themeMode, setThemeMode] = useState<ThemeMode>(() => {
+    const rootTheme = document.documentElement.dataset.theme;
+    const savedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
+    return rootTheme === "dark" || savedTheme === "dark" ? "dark" : "light";
+  });
   const classes = variantClasses[variant];
   const heading = <div><p className="eyebrow">{eyebrow}</p><h1>{title}</h1></div>;
   // Keep the mock feed aligned with the configured badge count and derive unread state locally.
   const notifications = headerNotifications.slice(0, notificationCount);
   const unreadCount = notifications.filter((notification) => !readNotificationIds.includes(notification.id)).length;
+
+  // Keep the CSS theme attribute and saved preference synchronized from the shared header.
+  useEffect(() => {
+    if (themeMode === "dark") {
+      document.documentElement.dataset.theme = "dark";
+    } else {
+      delete document.documentElement.dataset.theme;
+    }
+
+    window.localStorage.setItem(THEME_STORAGE_KEY, themeMode);
+  }, [themeMode]);
 
   const markAsRead = (notificationId: string) => {
     setReadNotificationIds((current) => current.includes(notificationId) ? current : [...current, notificationId]);
@@ -63,6 +83,14 @@ export default function PageHeader({ variant, eyebrow, title, notificationCount,
       <div className={classes.actions}>
         {statusLabel && <Chip className="live-status" icon={<span className="pulse-dot" />} label={statusLabel} variant="outlined" />}
         {actions}
+        <IconButton
+          className="icon-button theme-toggle"
+          aria-label={`Switch to ${themeMode === "dark" ? "light" : "dark"} theme`}
+          title={`Switch to ${themeMode === "dark" ? "light" : "dark"} theme`}
+          onClick={() => setThemeMode((current) => current === "dark" ? "light" : "dark")}
+        >
+          <Icon name={themeMode === "dark" ? "sun" : "moon"} />
+        </IconButton>
         <IconButton
           className="icon-button"
           aria-label={`Notifications${unreadCount ? `, ${unreadCount} unread` : ""}`}

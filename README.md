@@ -12,6 +12,7 @@ A React dashboard for monitoring worker safety, PPE compliance, worksite status 
 - Employee history
 - Worksite analysis
 - Interactive charts
+- Light and dark themes with a persistent header toggle
 - Responsive layout
 - Mock data driven
 - Reusable component architecture
@@ -126,12 +127,13 @@ These pages are visually complete but intentionally remain mostly static, using 
 
 - The application is entirely front-end and does not perform API calls.
 - All data is stored locally under `src/data`.
-- Authentication and persistent storage are intentionally out of scope.
+- Authentication and persistent domain data are intentionally out of scope.
 - Application routing is implemented with React Router using a shared `MainLayout` and `Outlet`.
 - Large page sections are separated into reusable, strongly typed React components.
 - Shared summary cards use a common `StatCard` component.
 - Inline SVGs were extracted into reusable assets under `src/assets/icons`.
 - Header notifications are interactive at the UI layer: users can open the notification panel and mark individual or all mock notifications as read. Their state is intentionally local and resets after a page reload because API integration and persistent storage are outside the assignment scope.
+- The application supports complete light and dark themes through shared CSS variables and a root `data-theme` attribute. Users can switch themes from the shared header, and the UI preference is retained in local storage across navigation and page reloads.
 - The color system follows a consistent semantic approach:
   - **Blue** → navigation & interactive elements
   - **Green** → success / compliant states

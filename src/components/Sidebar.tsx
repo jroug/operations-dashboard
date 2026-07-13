@@ -52,7 +52,7 @@ export default function Sidebar({ selectedWorkerId, collapsed, mobileOpen, onTog
             <div className="sidebar-profile">
                 <span className="profile-avatar">AK</span>
                 <span><strong>Alex Karras</strong><small>Safety Supervisor</small></span>
-                <Icon name="chevron" size={16} />
+                {/* <Icon name="chevron" size={16} /> */}
             </div>
         </Box>
     );

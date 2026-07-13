@@ -70,8 +70,10 @@ export type IconName =
   | "heart"
   | "helmet"
   | "location"
+  | "moon"
   | "search"
   | "settings"
   | "shield"
+  | "sun"
   | "team"
   | "user";
