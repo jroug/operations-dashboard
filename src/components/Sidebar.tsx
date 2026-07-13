@@ -1,10 +1,10 @@
 import { Box, Button } from "@mui/material";
 import Icon from "./Icon";
-import { NavLink } from "react-router-dom";
+import { NavLink, useMatch } from "react-router-dom";
 import { workers } from "../data/workers";
-   
+
 export default function Sidebar({ selectedWorkerId }: { selectedWorkerId: string }) {
-    const employeeHistoryMatch = window.location.pathname.startsWith("/employee-history");
+    const employeeHistoryMatch = useMatch("/employee-history/*");
 
     return (
         <Box component="aside" className="sidebar">
