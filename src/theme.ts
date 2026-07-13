@@ -14,10 +14,10 @@ const theme = createTheme({
   },
   shape: { borderRadius: 12 },
   typography: {
-    fontFamily: '"DM Sans", system-ui, sans-serif',
+    fontFamily: 'Roboto, system-ui, sans-serif',
     button: { textTransform: "none", fontWeight: 600 },
-    h1: { fontFamily: '"Manrope", sans-serif', fontWeight: 800 },
-    h2: { fontFamily: '"Manrope", sans-serif', fontWeight: 700 },
+    h1: { fontFamily: 'Roboto, sans-serif', fontWeight: 800 },
+    h2: { fontFamily: 'Roboto, sans-serif', fontWeight: 700 },
   },
   components: {
     MuiButton: { defaultProps: { disableElevation: true } },
