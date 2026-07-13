@@ -55,3 +55,22 @@ export interface Robot {
     time: string;
   }[];
 }
+
+
+export type IconName =
+  | "activity"
+  | "alert"
+  | "battery"
+  | "bell"
+  | "check"
+  | "chevron"
+  | "dashboard"
+  | "filter"
+  | "heart"
+  | "helmet"
+  | "location"
+  | "search"
+  | "settings"
+  | "shield"
+  | "team"
+  | "user";
