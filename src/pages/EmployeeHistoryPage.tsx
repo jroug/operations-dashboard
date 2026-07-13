@@ -9,7 +9,7 @@ import { AreaChart, Area, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip,
 import { Button, Chip, IconButton, Paper, Card, FormControl, Select, MenuItem } from "@mui/material";
 
 import Icon from "../components/Icon";
- import WorkerAvatar from "../components/WorkerAvatar";
+import WorkerAvatar from "../components/WorkerAvatar";
 
 
 const complianceTrend = [

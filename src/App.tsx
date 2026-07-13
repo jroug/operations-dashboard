@@ -1,6 +1,5 @@
 import { useMemo, useState } from "react";
 import {
-  Avatar,
   Box,
   Button,
   Card,
@@ -28,11 +27,12 @@ import { alerts as initialAlerts } from "./data/alerts";
 import { workers } from "./data/workers";
 import WorksiteAnalysisPage from "./pages/WorksiteAnalysisPage";
 import EmployeeHistoryPage from "./pages/EmployeeHistoryPage";
-import type { Alert, Worker } from "./types";
+import PlaceholderPage, { type PlaceholderPageType } from "./pages/PlaceholderPage";
+import type { Alert } from "./types";
 
 import Icon from "./components/Icon";
 import WorkerAvatar from "./components/WorkerAvatar";
-import type { IconName } from "./types";
+import StatCard from "./components/StatCard";
 
 
 const theme = createTheme({
@@ -59,22 +59,12 @@ const theme = createTheme({
   },
 });
 
-function StatCard({ label, value, meta, icon, tone }: { label: string; value: string; meta: string; icon: IconName; tone: string }) {
-  return (
-    <Card className="stat-card" elevation={0}>
-      <div className={`stat-icon ${tone}`}><Icon name={icon} size={21} /></div>
-      <div className="stat-copy">
-        <span>{label}</span>
-        <strong>{value}</strong>
-        <small>{meta}</small>
-      </div>
-    </Card>
-  );
-}
-
-
-
-
+const placeholderRoutes: Record<string, PlaceholderPageType> = {
+  "/role-analysis": "role-analysis",
+  "/accidents": "accidents",
+  "/robot-monitoring": "robot-monitoring",
+  "/ai-recommendations": "ai-recommendations",
+};
 
 
 
@@ -89,6 +79,7 @@ function App() {
   const selectedWorker = workers.find((worker) => worker.id === selectedWorkerId) ?? workers[0];
   const isHistoryPage = location.pathname.startsWith("/employee-history");
   const isWorksitePage = location.pathname.startsWith("/worksite-analysis");
+  const placeholderPage = placeholderRoutes[location.pathname];
   const routeWorkerId = location.pathname.split("/")[2];
   const historyWorker = workers.find((worker) => worker.id === routeWorkerId) ?? selectedWorker;
   const visibleWorkers = useMemo(() => workers.filter((worker) => {
@@ -115,13 +106,14 @@ function App() {
 
         <nav className="nav-menu" aria-label="Main navigation">
           <span className="nav-label">Workspace</span>
-          <Button disableRipple className={`nav-item ${!isHistoryPage && !isWorksitePage ? "active" : ""}`} onClick={() => navigate("/")}><Icon name="dashboard" /><span>Overview</span></Button>
+          <Button disableRipple className={`nav-item ${!isHistoryPage && !isWorksitePage && !placeholderPage ? "active" : ""}`} onClick={() => navigate("/")}><Icon name="dashboard" /><span>Overview</span></Button>
           <Button disableRipple className={`nav-item ${isHistoryPage ? "active" : ""}`} onClick={() => navigate(`/employee-history/${selectedWorkerId}`)}><Icon name="team" /><span>Employee history</span><span className="nav-count">{workers.length}</span></Button>
-          <Button disableRipple className="nav-item"><Icon name="alert" /><span>Incidents</span><span className="notification-dot" /></Button>
+          <Button disableRipple className={`nav-item ${placeholderPage === "role-analysis" ? "active" : ""}`} onClick={() => navigate("/role-analysis")}><Icon name="activity" /><span>Role analysis</span></Button>
           <span className="nav-label secondary">Management</span>
           <Button disableRipple className={`nav-item ${isWorksitePage ? "active" : ""}`} onClick={() => navigate("/worksite-analysis")}><Icon name="activity" /><span>Worksite analysis</span></Button>
-          <Button disableRipple className="nav-item"><Icon name="helmet" /><span>PPE Compliance</span></Button>
-          <Button disableRipple className="nav-item"><Icon name="settings" /><span>Settings</span></Button>
+          <Button disableRipple className={`nav-item ${placeholderPage === "accidents" ? "active" : ""}`} onClick={() => navigate("/accidents")}><Icon name="alert" /><span>Accidents</span><span className="notification-dot" /></Button>
+          <Button disableRipple className={`nav-item ${placeholderPage === "robot-monitoring" ? "active" : ""}`} onClick={() => navigate("/robot-monitoring")}><Icon name="settings" /><span>Robot monitoring</span></Button>
+          <Button disableRipple className={`nav-item ${placeholderPage === "ai-recommendations" ? "active" : ""}`} onClick={() => navigate("/ai-recommendations")}><Icon name="helmet" /><span>AI recommendations</span></Button>
         </nav>
 
         <div className="system-card">
@@ -149,6 +141,8 @@ function App() {
           />
         ) : isWorksitePage ? (
           <WorksiteAnalysisPage />
+        ) : placeholderPage ? (
+          <PlaceholderPage page={placeholderPage} />
         ) : (
         <>
         <header className="topbar">

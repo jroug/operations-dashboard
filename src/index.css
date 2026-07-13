@@ -405,6 +405,61 @@ h1 { margin: 0; font-size: 29px; line-height: 1.2; letter-spacing: -.7px; }
 .severity-list strong { font-size: 13px; }.severity-list small { margin-top: 2px; color: #8b9892; font-size: 10px; }.severity-list b { font-family: Manrope, sans-serif; font-size: 20px; }
 .severity-action.MuiButton-root { margin: 13px 0 -7px; padding: 5px 0; color: #397bde; font-size: 12px; }
 
+/* Static product pages */
+.placeholder-page { padding-bottom: 12px; }
+.placeholder-topbar { min-height: 84px; padding-top: 7px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.placeholder-title-wrap { display: flex; align-items: center; gap: 12px; }
+.placeholder-actions { display: flex; align-items: center; gap: 10px; }
+.placeholder-actions > .MuiButton-root { height: 38px; border-color: #d9e2de; border-radius: 9px; font-size: 12px; }
+.preview-chip.MuiChip-root { height: 28px; color: #566d63; background: #eef3f0; font-size: 11px; }
+.placeholder-description { max-width: 760px; margin: -2px 0 18px 50px; color: #718079; font-size: 14px; line-height: 1.5; }
+.placeholder-summary-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.placeholder-summary-card.MuiCard-root { min-width: 0; min-height: 112px; padding: 18px; display: flex; align-items: flex-start; gap: 14px; border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 2px 12px rgba(25,57,46,.025); }
+.placeholder-summary-icon { width: 41px; height: 41px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 11px; }
+.placeholder-summary-icon.blue { color: #397bde; background: #edf4ff; }.placeholder-summary-icon.green { color: #25805f; background: #eaf6f0; }.placeholder-summary-icon.violet { color: #7251b9; background: #f0eaff; }.placeholder-summary-icon.red { color: #d94a4a; background: #fff0ef; }.placeholder-summary-icon.amber { color: #c17a21; background: #fff4df; }
+.placeholder-summary-card > div { min-width: 0; display: flex; flex-direction: column; }
+.placeholder-summary-card small { color: #74827b; font-size: 14px; font-weight: 600; white-space: nowrap; }
+.placeholder-summary-card strong { margin-top: 1px; font-family: Manrope, sans-serif; font-size: 27px; line-height: 1.2; }
+.placeholder-summary-card p { margin: 6px 0 0; color: #8a9791; font-size: 12px; white-space: nowrap; }
+.placeholder-content-grid { margin-top: 15px; display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(300px, .75fr); gap: 15px; align-items: stretch; }
+.placeholder-panel.MuiPaper-root { min-width: 0; min-height: 300px; padding: 20px; border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 3px 16px rgba(25,57,46,.035); overflow: hidden; }
+.placeholder-panel.wide { grid-column: 1; }
+.placeholder-panel-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.placeholder-panel-heading h2 { margin: 0; font-size: 17px; }
+.placeholder-panel-heading p { margin: 4px 0 0; color: #87948e; font-size: 13px; }
+.placeholder-panel-heading .MuiChip-root { height: 27px; color: #68776f; border-color: #dde5e1; font-size: 10px; }
+.disabled-panel-action.MuiButton-root { width: 100%; margin-top: 20px; border: 1px dashed #d7dfdb; border-radius: 9px; font-size: 12px; }
+
+.role-comparison-table { margin: 17px -20px -20px; }
+.role-table-head, .role-table-row { display: grid; grid-template-columns: minmax(155px, 1.2fr) .45fr 1.1fr .5fr 1fr; align-items: center; gap: 12px; }
+.role-table-head { min-height: 36px; padding: 0 20px; color: #829089; background: #f8faf9; border-block: 1px solid #edf0ee; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .4px; }
+.role-table-row { min-height: 63px; padding: 8px 20px; color: #53635c; border-bottom: 1px solid #edf0ee; font-size: 12px; }
+.role-table-row:last-child { border-bottom: 0; }
+.role-name { display: flex; align-items: center; gap: 9px; }.role-name > i { width: 32px; height: 32px; display: grid; place-items: center; color: white; border-radius: 9px; font-style: normal; font-weight: 800; }.role-name strong { font-size: 13px; }
+.role-table-row > b { font-size: 13px; }.role-table-row > b.safe { color: #25805f; }.role-table-row > b.danger { color: #cc574e; }
+.role-progress { display: flex; align-items: center; gap: 8px; }.role-progress em { height: 6px; flex: 1; overflow: hidden; background: #e6ebe8; border-radius: 5px; }.role-progress em i { display: block; height: 100%; border-radius: inherit; }.role-progress strong { min-width: 32px; font-size: 11px; }
+.horizontal-metrics, .condition-breakdown { margin-top: 22px; display: flex; flex-direction: column; gap: 19px; }
+.metric-bar > span { display: flex; align-items: center; justify-content: space-between; }.metric-bar strong { color: #46574f; font-size: 13px; }.metric-bar b { color: #68776f; font-size: 12px; }.metric-bar > i { height: 8px; margin-top: 7px; display: block; overflow: hidden; background: #e9eeeb; border-radius: 6px; }.metric-bar em { display: block; height: 100%; border-radius: inherit; }
+
+.accident-register { margin: 17px -20px -20px; }
+.accident-row { min-height: 78px; padding: 10px 20px; display: grid; grid-template-columns: 65px minmax(145px, 1fr) auto minmax(180px, 1.2fr) 60px; align-items: center; gap: 12px; border-top: 1px solid #edf0ee; }
+.accident-date, .accident-main { display: flex; flex-direction: column; }.accident-date strong { font: 700 20px Manrope, sans-serif; }.accident-date small, .accident-main small { margin-top: 2px; color: #8c9993; font-size: 10px; }.accident-main strong { font-size: 14px; }
+.accident-severity.MuiChip-root { height: 24px; font-size: 9px; }.accident-severity.critical { color: #bd4e49; background: #fff0ef; }.accident-severity.medium { color: #af6e1c; background: #fff4df; }
+.condition-tags { display: flex; flex-wrap: wrap; gap: 5px; }.condition-tags i { padding: 4px 6px; color: #67776f; background: #f2f5f3; border-radius: 5px; font-size: 9px; font-style: normal; }
+.accident-row > .MuiButton-root { font-size: 10px; }
+.placeholder-insight { margin-top: 24px; padding: 13px; display: flex; align-items: center; gap: 10px; color: #8f641f; background: #fff7e9; border: 1px solid #f1ddba; border-radius: 10px; }.placeholder-insight > span { width: 34px; height: 34px; flex: 0 0 auto; display: grid; place-items: center; background: #ffedc9; border-radius: 8px; }.placeholder-insight p { margin: 0; display: flex; flex-direction: column; font-size: 11px; }.placeholder-insight strong { color: #74501b; font-size: 12px; }
+
+.robot-feed-panel { min-height: 410px; }
+.robot-feed-placeholder { position: relative; height: 245px; margin-top: 16px; display: flex; align-items: center; justify-content: center; flex-direction: column; overflow: hidden; color: #d6e3ef; background: radial-gradient(circle at 50% 100%, #23405d, #101d2b 65%); border-radius: 11px; }
+.robot-feed-placeholder::before { content: ""; position: absolute; inset: 0; opacity: .18; background-image: linear-gradient(rgba(112,167,218,.25) 1px, transparent 1px), linear-gradient(90deg, rgba(112,167,218,.25) 1px, transparent 1px); background-size: 30px 30px; }.robot-camera-icon { z-index: 1; width: 58px; height: 58px; display: grid; place-items: center; background: rgba(101,157,210,.16); border: 1px solid rgba(140,191,238,.25); border-radius: 50%; }.robot-feed-placeholder strong, .robot-feed-placeholder p { z-index: 1; }.robot-feed-placeholder strong { margin-top: 10px; font-size: 14px; }.robot-feed-placeholder p { margin: 3px 0 0; color: #8faac1; font-size: 11px; }.scan-line { position: absolute; z-index: 1; left: 0; right: 0; top: 38%; height: 1px; background: rgba(95,211,180,.55); box-shadow: 0 0 14px #5fd3b4; }.feed-label, .feed-time { position: absolute; z-index: 2; top: 10px; padding: 4px 6px; border-radius: 4px; font-size: 8px; font-style: normal; }.feed-label { left: 10px; color: #6de1b7; background: rgba(34,99,79,.45); }.feed-time { right: 10px; color: #b2c5d5; background: rgba(10,19,28,.5); }
+.robot-sensors { margin-top: 12px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }.robot-sensors > div { padding: 9px; display: flex; flex-direction: column; background: #f7f9f8; border-radius: 8px; }.robot-sensors span { font-size: 13px; font-weight: 700; }.robot-sensors small { margin-top: 2px; color: #87948e; font-size: 9px; }.safe-text { color: #25805f; }
+.robot-detections { margin-top: 15px; }.robot-detections > div { min-height: 62px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #edf0ee; }.robot-detections > div > span { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 8px; }.robot-detections > div > span.warning { color: #c17a21; background: #fff4df; }.robot-detections > div > span.neutral { color: #397bde; background: #edf4ff; }.robot-detections p { flex: 1; margin: 0; display: flex; flex-direction: column; }.robot-detections strong { font-size: 13px; }.robot-detections small { margin-top: 3px; color: #8a9791; font-size: 10px; }.robot-detections .MuiChip-root { height: 23px; font-size: 9px; }
+.patrol-route { margin: 15px 0; padding: 12px; display: grid; grid-template-columns: 32px auto 1fr; align-items: center; gap: 9px; background: #f7f9f8; border-radius: 9px; }.patrol-route > span { width: 32px; height: 32px; display: grid; place-items: center; color: #397bde; background: #e8f1ff; border-radius: 8px; }.patrol-route > div { display: flex; flex-direction: column; }.patrol-route small { color: #8a9791; font-size: 9px; }.patrol-route strong { font-size: 11px; }.patrol-route em { height: 5px; overflow: hidden; background: #e1e7e4; border-radius: 5px; }.patrol-route em i { display: block; width: 68%; height: 100%; background: #397bde; border-radius: inherit; }
+
+.recommendation-list { margin: 16px -20px -20px; }.recommendation-card { min-height: 112px; padding: 14px 20px; display: grid; grid-template-columns: 58px minmax(0, 1fr) 60px; align-items: center; gap: 13px; border-top: 1px solid #edf0ee; }.recommendation-score { width: 54px; height: 54px; display: grid; place-content: center; color: #397bde; background: #edf4ff; border: 4px solid #cddff7; border-radius: 50%; font: 800 16px Manrope, sans-serif; text-align: center; }.recommendation-score small { color: #7b8b84; font: 500 8px "DM Sans", sans-serif; }.recommendation-card > div { min-width: 0; }.recommendation-card > div > span { display: flex; align-items: center; gap: 7px; }.recommendation-card > div > span strong { font-size: 12px; }.recommendation-priority.MuiChip-root { height: 21px; font-size: 8px; }.recommendation-priority.high { color: #bd4e49; background: #fff0ef; }.recommendation-priority.medium { color: #af6e1c; background: #fff4df; }.recommendation-card h3 { margin: 6px 0 3px; font-size: 14px; }.recommendation-card p { margin: 0 0 5px; color: #74827b; font-size: 11px; line-height: 1.4; }.recommendation-card > div > small { color: #8a9791; font-size: 9px; }.recommendation-card > div > small b { color: #53635b; }.recommendation-card > .MuiButton-root { font-size: 10px; }
+.impact-score { margin: 21px 0; display: flex; align-items: center; justify-content: space-around; }.impact-score > span { display: flex; flex-direction: column; }.impact-score > span strong { color: #25805f; font: 800 28px Manrope, sans-serif; }.impact-score > span small { color: #829089; font-size: 10px; }.impact-ring { width: 78px; height: 78px; padding: 7px; display: grid; place-items: center; background: conic-gradient(#7557c5 317deg, #e8e9ef 0); border-radius: 50%; }.impact-ring div { width: 64px; height: 64px; display: grid; place-items: center; background: white; border-radius: 50%; font: 800 16px Manrope, sans-serif; }
+.impact-list { margin-bottom: 18px; }.impact-list > span { min-height: 40px; display: flex; align-items: center; gap: 8px; color: #5c6c64; border-bottom: 1px solid #edf0ee; font-size: 11px; }.impact-list i { width: 7px; height: 7px; border-radius: 50%; }.impact-list i.high { background: #d96357; }.impact-list i.medium { background: #ce8117; }.impact-list i.low { background: #397bde; }.impact-list b { margin-left: auto; font-size: 11px; }
+
 @media (max-width: 1120px) {
   .main-content { padding-left: 22px; padding-right: 22px; }
   .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -419,6 +474,11 @@ h1 { margin: 0; font-size: 29px; line-height: 1.2; letter-spacing: -.7px; }
   .worksite-main-grid { grid-template-columns: minmax(0, 1fr) 290px; }
   .site-row { grid-template-columns: 38px minmax(130px, 1.2fr) .55fr 1fr auto 18px; }
   .site-alerts { display: none; }
+  .placeholder-content-grid { grid-template-columns: minmax(0, 1fr) 290px; }
+  .role-table-head, .role-table-row { grid-template-columns: minmax(135px, 1fr) .4fr 1fr .4fr; }
+  .role-table-head > :last-child, .role-table-row > :last-child { display: none; }
+  .accident-row { grid-template-columns: 55px minmax(130px, 1fr) auto 70px; }
+  .condition-tags { display: none; }
 }
 
 @media (max-width: 900px) {
@@ -439,6 +499,9 @@ h1 { margin: 0; font-size: 29px; line-height: 1.2; letter-spacing: -.7px; }
   .worksite-main-grid { grid-template-columns: 1fr; }
   .site-comparison-panel, .compliance-bars-panel, .severity-panel { grid-column: 1; grid-row: auto; }
   .site-row { grid-template-columns: 38px minmax(130px, 1.2fr) .55fr 1fr auto 18px; }
+  .sidebar { overflow-y: auto; }
+  .placeholder-content-grid { grid-template-columns: 1fr; }
+  .placeholder-panel.wide { grid-column: 1; }
 }
 
 @media (max-width: 680px) {
@@ -479,4 +542,16 @@ h1 { margin: 0; font-size: 29px; line-height: 1.2; letter-spacing: -.7px; }
   .site-list { margin-left: -16px; margin-right: -16px; margin-bottom: -16px; overflow-x: auto; }
   .site-row { min-width: 680px; padding-left: 16px; padding-right: 16px; }
   .severity-list { grid-template-columns: 1fr; }
+  .placeholder-topbar { min-height: 78px; padding: 13px 0; align-items: flex-start; }
+  .placeholder-actions { flex-wrap: wrap; justify-content: flex-end; }
+  .placeholder-actions > .MuiButton-root { display: none; }
+  .placeholder-description { margin: -2px 0 15px; }
+  .placeholder-summary-grid { grid-template-columns: 1fr; gap: 9px; }
+  .placeholder-summary-card.MuiCard-root { min-height: 96px; padding: 14px; }
+  .placeholder-panel.MuiPaper-root { padding: 16px; }
+  .role-comparison-table, .accident-register, .recommendation-list { margin-left: -16px; margin-right: -16px; margin-bottom: -16px; overflow-x: auto; }
+  .role-table-head, .role-table-row { min-width: 620px; padding-left: 16px; padding-right: 16px; }
+  .accident-row { min-width: 620px; padding-left: 16px; padding-right: 16px; }
+  .robot-sensors { grid-template-columns: 1fr 1fr; }
+  .recommendation-card { min-width: 650px; padding-left: 16px; padding-right: 16px; }
 }
