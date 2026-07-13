@@ -127,6 +127,7 @@ These pages are visually complete but intentionally remain mostly static, using 
 
 - The application is entirely front-end and does not perform API calls.
 - All data is stored locally under `src/data`.
+- The provided mock dataset was extended with additional data for the Employee History and Worksite Analysis pages to better demonstrate charts, analytics, and UI interactions.
 - Authentication and persistent domain data are intentionally out of scope.
 - Application routing is implemented with React Router using a shared `MainLayout` and `Outlet`.
 - Large page sections are separated into reusable, strongly typed React components.
@@ -155,9 +156,12 @@ src/
 ├── data/
 ├── layouts/
 ├── pages/
-├── routes.tsx
 ├── types/
-└── index.css
+├── App.tsx
+├── index.css
+├── main.tsx
+├── routes.tsx
+└── theme.ts
 ```
 
 ---
