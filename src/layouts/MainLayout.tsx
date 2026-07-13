@@ -1,0 +1,50 @@
+import { useState } from "react";
+import { Box, Button } from "@mui/material";
+import { NavLink, Outlet, useMatch } from "react-router-dom";
+import Icon from "../components/Icon";
+import { workers } from "../data/workers";
+import type { MainLayoutContext } from "./mainLayoutContext";
+
+export default function MainLayout() {
+  const [selectedWorkerId, setSelectedWorkerId] = useState(workers[0].id);
+  const employeeHistoryMatch = useMatch("/employee-history/:workerId");
+
+  return (
+    <Box className="app-shell">
+      <Box component="aside" className="sidebar">
+        <div className="brand">
+          <span className="brand-mark"><Icon name="shield" size={23} /></span>
+          <span className="brand-text"><strong>SafeWith</strong><b>Carmen</b></span>
+        </div>
+
+        <nav className="nav-menu" aria-label="Main navigation">
+          <span className="nav-label">Workspace</span>
+          <Button component={NavLink} to="/" end disableRipple className="nav-item"><Icon name="dashboard" /><span>Overview</span></Button>
+          <Button component={NavLink} to={`/employee-history/${selectedWorkerId}`} disableRipple className={`nav-item ${employeeHistoryMatch ? "active" : ""}`}><Icon name="team" /><span>Employee history</span><span className="nav-count">{workers.length}</span></Button>
+          <Button component={NavLink} to="/role-analysis" disableRipple className="nav-item"><Icon name="activity" /><span>Role analysis</span></Button>
+          <span className="nav-label secondary">Management</span>
+          <Button component={NavLink} to="/worksite-analysis" disableRipple className="nav-item"><Icon name="activity" /><span>Worksite analysis</span></Button>
+          <Button component={NavLink} to="/accidents" disableRipple className="nav-item"><Icon name="alert" /><span>Accidents</span><span className="notification-dot" /></Button>
+          <Button component={NavLink} to="/robot-monitoring" disableRipple className="nav-item"><Icon name="settings" /><span>Robot monitoring</span></Button>
+          <Button component={NavLink} to="/ai-recommendations" disableRipple className="nav-item"><Icon name="helmet" /><span>AI recommendations</span></Button>
+        </nav>
+
+        <div className="system-card">
+          <div className="system-card-head"><span className="pulse-dot" /><strong>All systems operational</strong></div>
+          <p>Last health check 2 min ago</p>
+          <div className="system-meter"><span /></div>
+        </div>
+
+        <div className="sidebar-profile">
+          <span className="profile-avatar">AK</span>
+          <span><strong>Alex Karras</strong><small>Safety Supervisor</small></span>
+          <Icon name="chevron" size={16} />
+        </div>
+      </Box>
+
+      <Box component="main" className="main-content">
+        <Outlet context={{ selectedWorkerId, setSelectedWorkerId } satisfies MainLayoutContext} />
+      </Box>
+    </Box>
+  );
+}

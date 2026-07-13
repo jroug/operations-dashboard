@@ -1,8 +1,7 @@
 import { alerts as initialAlerts } from "../data/alerts";
 import { incidents } from "../data/incidents";
 import { workers } from "../data/workers";
-
-import type { Worker } from "../types";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { AreaChart, Area, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
@@ -10,6 +9,7 @@ import { Button, Chip, IconButton, Paper, Card, FormControl, Select, MenuItem } 
 
 import Icon from "../components/Icon";
 import WorkerAvatar from "../components/WorkerAvatar";
+import { useMainLayoutContext } from "../layouts/mainLayoutContext";
 
 
 const complianceTrend = [
@@ -30,9 +30,16 @@ const biometricTrend = [
   { time: "11:00", heartRate: 93, fatigue: 58 },
 ];
 
-export default function EmployeeHistoryPage({ worker, onWorkerChange, onBack }: { worker: Worker; onWorkerChange: (id: string) => void; onBack: () => void }) {
+export default function EmployeeHistoryPage() {
+  const navigate = useNavigate();
+  const { workerId } = useParams<{ workerId: string }>();
+  const { setSelectedWorkerId } = useMainLayoutContext();
+  const worker = workers.find((item) => item.id === workerId) ?? workers[0];
 
-
+  const handleWorkerChange = (id: string) => {
+    setSelectedWorkerId(id);
+    navigate(`/employee-history/${id}`);
+  };
 
   const workerAlerts = initialAlerts.filter((alert) => alert.workerId === worker.id);
   const workerIncidents = incidents.filter((incident) => incident.workerId === worker.id);
@@ -50,7 +57,7 @@ export default function EmployeeHistoryPage({ worker, onWorkerChange, onBack }: 
     <div className="history-page">
       <header className="history-topbar">
         <div className="history-title-wrap">
-          <Button className="back-button" onClick={onBack}><span className="back-chevron"><Icon name="chevron" size={18} /></span></Button>
+          <Button className="back-button" onClick={() => navigate("/")}><span className="back-chevron"><Icon name="chevron" size={18} /></span></Button>
           <div><p className="eyebrow">Workforce / Employee history</p><h1>Employee history</h1></div>
         </div>
         <div className="topbar-actions">
@@ -72,7 +79,7 @@ export default function EmployeeHistoryPage({ worker, onWorkerChange, onBack }: 
         <div className="employee-picker">
           <span>View employee</span>
           <FormControl size="small">
-            <Select value={worker.id} onChange={(event) => onWorkerChange(event.target.value)}>
+            <Select value={worker.id} onChange={(event) => handleWorkerChange(event.target.value)}>
               {workers.map((item) => <MenuItem value={item.id} key={item.id}>{item.name}</MenuItem>)}
             </Select>
           </FormControl>
