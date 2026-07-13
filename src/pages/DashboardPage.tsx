@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import AlertsPanel, { type DashboardAlert } from "../components/dashboard/AlertsPanel";
 import DashboardHeader from "../components/dashboard/DashboardHeader";
 import KeyMetrics from "../components/dashboard/KeyMetrics";
@@ -10,6 +11,7 @@ import { useMainLayoutContext } from "../layouts/mainLayoutContext";
 import type { Alert } from "../types";
 
 export default function DashboardPage() {
+  const navigate = useNavigate();
   const { selectedWorkerId, setSelectedWorkerId } = useMainLayoutContext();
   const [query, setQuery] = useState("");
   const [status, setStatus] = useState<WorkforceStatusFilter>("all");
@@ -54,6 +56,7 @@ export default function DashboardPage() {
         onQueryChange={setQuery}
         onStatusChange={setStatus}
         onWorkerSelect={setSelectedWorkerId}
+        onViewHistory={(workerId) => navigate(`/employee-history/${workerId}`)}
       />
       <AlertsPanel alerts={dashboardAlerts} onAcknowledge={acknowledgeAlert} />
       <WorkerDetailsPanel worker={selectedWorker} ppeItems={ppeItems} />
