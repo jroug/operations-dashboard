@@ -1,5 +1,5 @@
-import { Card } from "@mui/material";
 import type { PlaceholderSummaryCard } from "../../types/placeholderPages";
+import StatCard from "../StatCard";
 import PageIcon from "./PageIcon";
 
 interface PlaceholderSummaryGridProps {
@@ -7,5 +7,5 @@ interface PlaceholderSummaryGridProps {
 }
 
 export default function PlaceholderSummaryGrid({ cards }: PlaceholderSummaryGridProps) {
-  return <section className="placeholder-summary-grid">{cards.map((card) => <Card className="placeholder-summary-card" elevation={0} key={card.label}><span className={`placeholder-summary-icon ${card.tone}`}><PageIcon name={card.icon} /></span><div><small>{card.label}</small><strong>{card.value}</strong><p>{card.note}</p></div></Card>)}</section>;
+  return <section className="placeholder-summary-grid">{cards.map((card) => <StatCard label={card.label} value={card.value} meta={card.note} icon={<PageIcon name={card.icon} size={21} />} tone={card.tone} key={card.label} />)}</section>;
 }

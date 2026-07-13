@@ -1,4 +1,4 @@
-import { Card } from "@mui/material";
+import StatCard from "../StatCard";
 import SiteIcon from "./SiteIcon";
 import type { SiteName } from "./types";
 
@@ -15,10 +15,10 @@ interface WorksiteKpiGridProps {
 export default function WorksiteKpiGrid({ selectedSite, activeWorksites, averageCompliance, workerCount, connectedWorkerCount, alertCount, criticalAlertCount }: WorksiteKpiGridProps) {
   return (
     <section className="worksite-kpi-grid">
-      <Card className="worksite-kpi" elevation={0}><span className="worksite-kpi-icon blue"><SiteIcon name="building" /></span><div><small>Active worksites</small><strong>{activeWorksites}</strong><p>{selectedSite === "All sites" ? "All sites reporting" : "Currently selected"}</p></div></Card>
-      <Card className="worksite-kpi" elevation={0}><span className="worksite-kpi-icon green"><SiteIcon name="trend" /></span><div><small>Average compliance</small><strong>{averageCompliance}%</strong><p className={averageCompliance >= 80 ? "positive" : "negative"}>{averageCompliance >= 80 ? "↑ 3.6% this month" : "Below 90% target"}</p></div></Card>
-      <Card className="worksite-kpi" elevation={0}><span className="worksite-kpi-icon violet"><SiteIcon name="team" /></span><div><small>Workers on site</small><strong>{workerCount}</strong><p>{connectedWorkerCount} devices connected</p></div></Card>
-      <Card className="worksite-kpi" elevation={0}><span className="worksite-kpi-icon red"><SiteIcon name="alert" /></span><div><small>Active alerts</small><strong>{alertCount}</strong><p className="negative">{criticalAlertCount} critical event</p></div></Card>
+      <StatCard label="Active worksites" value={activeWorksites} meta={selectedSite === "All sites" ? "All sites reporting" : "Currently selected"} icon={<SiteIcon name="building" size={21} />} tone="blue" />
+      <StatCard label="Average compliance" value={`${averageCompliance}%`} meta={averageCompliance >= 80 ? "↑ 3.6% this month" : "Below 90% target"} icon={<SiteIcon name="trend" size={21} />} tone="green" metaClassName={averageCompliance >= 80 ? "positive" : "negative"} />
+      <StatCard label="Workers on site" value={workerCount} meta={`${connectedWorkerCount} devices connected`} icon={<SiteIcon name="team" size={21} />} tone="violet" />
+      <StatCard label="Active alerts" value={alertCount} meta={`${criticalAlertCount} critical event`} icon={<SiteIcon name="alert" size={21} />} tone="red" metaClassName="negative" />
     </section>
   );
 }
