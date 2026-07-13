@@ -123,7 +123,7 @@ button { cursor: pointer; }
 .sidebar .nav-item.MuiButton-root:hover { background: rgba(125,174,255,.09); color: #e4ebf7; }
 .sidebar .nav-item.MuiButton-root.active { color: #fff; background: rgba(125,174,255,.16); box-shadow: inset 3px 0 #7daeff; }
 .nav-item.active svg { color: #7daeff; }
-.nav-count { min-width: 22px; height: 20px; padding: 0 6px; display: grid; place-items: center; border-radius: 10px; background: rgba(125,174,255,.14); font-size: 14px; }
+.nav-count { min-width: 22px; height: 20px; padding: 0 6px; display: grid; place-items: center; border-radius: 10px; background: rgba(125,174,255,.14); font-size: 12px; }
 .notification-dot { width: 6px; height: 6px; border-radius: 50%; background: #ff6b62; box-shadow: 0 0 0 3px rgba(255,107,98,.12); }
 .system-card { margin-top: auto; padding: 14px; border: 1px solid rgba(255,255,255,.07); background: rgba(255,255,255,.04); border-radius: 12px; }
 .system-card-head { display: flex; align-items: center; gap: 8px; font-size: 14px; }
