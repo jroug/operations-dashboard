@@ -1,178 +1,94 @@
-# SafeWithCarmen Dashboard
+# Operations Dashboard
 
-A React dashboard for monitoring worker safety, PPE compliance, worksite status and operational alerts. The application was developed as a front-end take-home assignment using local mock data.
+A front-end portfolio demo for exploring team activity, task readiness, location performance, and connected assets. Built with React, TypeScript, Material UI, and Recharts, with an indigo visual identity and responsive light and dark themes.
 
----
+This project was adapted from a technical exercise into a generic operations showcase. All people, locations, events, and telemetry are fictional sample data. It does not represent a client deployment or connect to a live monitoring service.
 
 ## Features
 
-- Worker safety dashboard
-- PPE compliance monitoring
-- Live alerts management
-- Employee history
-- Worksite analysis
-- Interactive charts
-- Light and dark themes with a persistent header toggle
-- Responsive layout
-- Mock data driven
-- Reusable component architecture
+- Operations overview with task completion KPIs and alert summaries
+- Team search and readiness filtering, member selection, and activity navigation
+- Task checklists, capacity utilization, workload levels, and device status
+- Team activity charts and incident timelines
+- Location filtering, performance comparisons, completion trends, and issue maps
+- Alert acknowledgement and interactive header notifications
+- Persistent light/dark theme preference
+- Collapsible sidebar and responsive navigation
+- Static previews for team performance, incident tracking, asset monitoring, and operational insights
 
----
+## Screens
 
-## Tech Stack
+| Route | Screen | Behavior |
+| --- | --- | --- |
+| `/` | Operations overview | Search, readiness filters, member selection, and alert acknowledgement |
+| `/team-activity/:workerId` | Team activity | Member selection, checklist, workload charts, and event history |
+| `/location-analytics` | Location analytics | Location selection and scoped analytics |
+| `/team-performance` | Team performance | Static role comparison and checklist gaps |
+| `/incidents` | Incident tracking | Sample incident register and contributing conditions |
+| `/asset-monitoring` | Asset monitoring | Simulated telemetry and asset events |
+| `/operational-insights` | Operational insights | Sample suggestions and an illustrative planning scenario |
 
-- React 19
-- TypeScript
+The collection route `/team-activity` opens the first sample member. Unknown routes return to the overview.
+
+## Tech stack
+
+- React 19 and TypeScript
 - Vite
 - Material UI
 - React Router
 - Recharts
-- CSS (responsive for desktop and tablet)
+- CSS variables and responsive layouts
 
----
+## Local development
 
-## Requirements
-
-- Node.js **20.19+** or **22.12+**
-- npm
-
----
-
-## Getting Started
-
-Install dependencies:
+Use Node.js **20.19+** or **22.12+**, and npm.
 
 ```bash
 npm install
-```
-
-Start the development server:
-
-```bash
 npm run dev
 ```
 
-Open the URL displayed by Vite (typically `http://localhost:5173`).
+Open the local URL printed by Vite.
 
----
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Start the development server |
+| `npm run build` | Check TypeScript and create a production build in `dist/` |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run ESLint |
 
-## Available Scripts
-
-Run the development server:
-
-```bash
-npm run dev
-```
-
-Create a production build:
-
-```bash
-npm run build
-```
-
-Preview the production build locally:
-
-```bash
-npm run preview
-```
-
-Run ESLint:
-
-```bash
-npm run lint
-```
-
----
-
-## Implemented Screens
-
-### Fully Implemented
-
-- **Dashboard (`/`)**
-  - Workforce overview
-  - KPI cards
-  - Search & filtering
-  - Worker selection
-  - PPE status
-  - Biometrics
-  - Live alerts
-  - Navigation to employee history
-
-- **Employee History (`/employee-history/:workerId`)**
-  - Employee profile
-  - Historical compliance trends
-  - PPE overview
-  - Biometrics
-  - Incident timeline
-
-- **Worksite Analysis (`/worksite-analysis`)**
-  - Worksite KPIs
-  - Site comparison
-  - Compliance charts
-  - Risk zone map
-  - Alert severity analysis
-
-### Static Preview Screens
-
-- Role Analysis
-- Accidents
-- Robot Monitoring
-- AI Recommendations
-
-These pages are visually complete but intentionally remain mostly static, using mock content and placeholder interactions where appropriate.
-
----
-
-## Architecture & Design Decisions
-
-- The application is entirely front-end and does not perform API calls.
-- All data is stored locally under `src/data`.
-- The provided mock dataset was extended with additional data for the Employee History and Worksite Analysis pages to better demonstrate charts, analytics, and UI interactions.
-- Authentication and persistent domain data are intentionally out of scope.
-- Application routing is implemented with React Router using a shared `MainLayout` and `Outlet`.
-- Large page sections are separated into reusable, strongly typed React components.
-- Shared summary cards use a common `StatCard` component.
-- Inline SVGs were extracted into reusable assets under `src/assets/icons`.
-- Header notifications are interactive at the UI layer: users can open the notification panel and mark individual or all mock notifications as read. Their state is intentionally local and resets after a page reload because API integration and persistent storage are outside the assignment scope.
-- The application supports complete light and dark themes through shared CSS variables and a root `data-theme` attribute. Users can switch themes from the shared header, and the UI preference is retained in local storage across navigation and page reloads.
-- The color system follows a consistent semantic approach:
-  - **Blue** → navigation & interactive elements
-  - **Green** → success / compliant states
-  - **Orange** → warnings
-  - **Red** → critical alerts
-- Charts are implemented using Recharts.
-- The UI is optimized primarily for desktop and tablet, with responsive layouts for smaller screens.
-- The project emphasizes clean architecture, component reusability and maintainability over feature completeness.
-
----
-
-## Project Structure
+## Architecture
 
 ```text
 src/
-├── assets/
-│   └── icons/
+├── assets/icons/          # Reusable SVG icons
 ├── components/
-├── data/
-├── layouts/
-├── pages/
-├── types/
-├── App.tsx
-├── index.css
-├── main.tsx
-├── routes.tsx
-└── theme.ts
+│   ├── dashboard/        # Overview panels
+│   ├── team-activity/    # Member activity panels
+│   ├── location-analytics/ # Location analytics panels
+│   └── placeholders/     # Static preview screens
+├── data/                 # Typed fictional datasets
+├── layouts/              # Shared navigation and member selection
+├── pages/                # Page composition and interaction state
+├── types/                # Domain and preview models
+├── routes.tsx            # Route definitions
+├── theme.ts              # Material UI configuration
+└── index.css             # Layout, components, and theme tokens
 ```
 
----
+Page components own filtering and selection state, while reusable panels render their supplied data. Shared summary cards use `StatCard`. Typed datasets separate sample content from presentation.
 
-## Notes
+Task completion is the percentage of assigned work completed. Readiness indicates whether every checklist item is complete; it is distinct from completion percentage. Utilization measures the percentage of available capacity allocated, and queue load charts show a sample percentage over the day. Location summaries aggregate the sample roster and alerts.
 
-This project was developed as a front-end technical assessment and focuses on:
+## Demo scope and limitations
 
-- Clean code
-- Component reusability
-- Type safety
-- Responsive design
-- Maintainable project structure
-- Modern React best practices
+- The application has no backend, authentication, or persistent domain storage.
+- All operational data comes from `src/data`; dates and times belong to a fixed sample scenario.
+- Asset telemetry is simulated. Operational insights are authored examples, with no AI service or predictive model behind them.
+- Preview screens are mostly static. Export/report controls, remote controls, and suggestion delivery are placeholders; they do not download reports, operate equipment, or send messages.
+- Overview alert acknowledgements are local to that page and reset when it remounts. Header notification read state also resets when its component remounts. Neither updates the historical datasets.
+- Theme preference is saved in local storage using `operations-dashboard-theme`.
+- The layout targets desktop and tablet, with mobile navigation and scrollable data tables.
+- Google Fonts supplies Roboto, with system font fallbacks.
+
+The showcase emphasizes reusable components, typed data, interactive filtering, chart composition, and responsive interface design.

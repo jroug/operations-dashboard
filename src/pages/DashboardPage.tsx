@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import AlertsPanel, { type DashboardAlert } from "../components/dashboard/AlertsPanel";
 import KeyMetrics from "../components/dashboard/KeyMetrics";
 import WorkforceTable, { type WorkforceStatusFilter } from "../components/dashboard/WorkforceTable";
-import WorkerDetailsPanel, { type PpeItem } from "../components/dashboard/WorkerDetailsPanel";
+import WorkerDetailsPanel, { type ChecklistItem } from "../components/dashboard/WorkerDetailsPanel";
 import PageHeader from "../components/PageHeader";
 import { alerts as initialAlerts } from "../data/alerts";
 import { workers } from "../data/workers";
@@ -25,33 +25,33 @@ export default function DashboardPage() {
   const [acknowledged, setAcknowledged] = useState<string[]>([]);
 
   const selectedWorker = workers.find((worker) => worker.id === selectedWorkerId) ?? workers[0];
-  // Search and compliance filters are combined here so the table remains presentational.
-  const visibleWorkers = useMemo(() => workers.filter((worker) => {
+  // Search and completion filters are combined here so the table remains presentational.
+  const visibleMembers = useMemo(() => workers.filter((worker) => {
     const matchesQuery = `${worker.name} ${worker.role} ${worker.site} ${worker.zone}`.toLowerCase().includes(query.toLowerCase());
-    const matchesStatus = status === "all" || (status === "compliant" ? worker.compliant : !worker.compliant);
+    const matchesStatus = status === "all" || (status === "onTrack" ? worker.onTrack : !worker.onTrack);
     return matchesQuery && matchesStatus;
   }), [query, status]);
 
   // Adapt the worker record into the view models consumed by the detail and alert panels.
-  const ppeItems: PpeItem[] = Object.entries(selectedWorker.ppe).map(([name, active]) => ({ name, active }));
+  const checklistItems: ChecklistItem[] = Object.entries(selectedWorker.checklist).map(([name, active]) => ({ name, active }));
   const openAlerts = initialAlerts.filter((alert) => !acknowledged.includes(alert.id));
   const dashboardAlerts: DashboardAlert[] = openAlerts.map((alert) => ({
     ...alert,
     workerName: workers.find((worker) => worker.id === alert.workerId)?.name,
   }));
-  // Aggregate workforce compliance and remaining alert severities for the summary cards.
-  const compliance = Math.round(workers.reduce((sum, worker) => sum + worker.complianceScore, 0) / workers.length);
+  // Aggregate workforce completion and remaining alert severities for the summary cards.
+  const completion = Math.round(workers.reduce((sum, worker) => sum + worker.completionScore, 0) / workers.length);
   const highPriorityAlertCount = openAlerts.filter((alert) => alert.severity === "high").length;
   const criticalAlertCount = openAlerts.filter((alert) => alert.severity === "critical").length;
 
   const acknowledgeAlert = (alert: Alert) => setAcknowledged((current) => [...current, alert.id]);
 
   return <>
-    <PageHeader variant="dashboard" eyebrow={currentDate} title="Safety overview" notificationCount={3} statusLabel="Live monitoring" />
+    <PageHeader variant="dashboard" eyebrow={currentDate} title="Operations overview" notificationCount={3} statusLabel="Demo · Sample data" />
 
     <KeyMetrics
       workersOnSite={workers.length}
-      compliance={compliance}
+      completion={completion}
       activeAlerts={openAlerts.length}
       highPriorityAlerts={highPriorityAlertCount}
       criticalAlerts={criticalAlertCount}
@@ -59,17 +59,17 @@ export default function DashboardPage() {
 
     <section className="dashboard-grid">
       <WorkforceTable
-        workers={visibleWorkers}
+        workers={visibleMembers}
         selectedWorkerId={selectedWorker.id}
         query={query}
         status={status}
         onQueryChange={setQuery}
         onStatusChange={setStatus}
         onWorkerSelect={setSelectedWorkerId}
-        onViewHistory={(workerId) => navigate(`/employee-history/${workerId}`)}
+        onViewHistory={(workerId) => navigate(`/team-activity/${workerId}`)}
       />
       <AlertsPanel alerts={dashboardAlerts} onAcknowledge={acknowledgeAlert} />
-      <WorkerDetailsPanel worker={selectedWorker} ppeItems={ppeItems} />
+      <WorkerDetailsPanel worker={selectedWorker} checklistItems={checklistItems} />
     </section>
   </>;
 }

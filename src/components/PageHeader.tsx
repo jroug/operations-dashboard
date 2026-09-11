@@ -3,7 +3,7 @@ import { useEffect, useState, type ReactNode } from "react";
 import { Button, Chip, IconButton, Popover } from "@mui/material";
 import Icon from "./Icon";
 
-export type PageHeaderVariant = "dashboard" | "employee-history" | "worksite" | "placeholder";
+export type PageHeaderVariant = "dashboard" | "team-activity" | "location" | "placeholder";
 
 export interface PageHeaderProps {
   variant: PageHeaderVariant;
@@ -17,8 +17,8 @@ export interface PageHeaderProps {
 
 const variantClasses: Record<PageHeaderVariant, { header: string; title?: string; actions: string }> = {
   dashboard: { header: "topbar", actions: "topbar-actions" },
-  "employee-history": { header: "history-topbar", title: "history-title-wrap", actions: "topbar-actions" },
-  worksite: { header: "worksite-topbar", title: "worksite-title-wrap", actions: "worksite-actions" },
+  "team-activity": { header: "history-topbar", title: "history-title-wrap", actions: "topbar-actions" },
+  location: { header: "location-topbar", title: "location-title-wrap", actions: "location-actions" },
   placeholder: { header: "placeholder-topbar", title: "placeholder-title-wrap", actions: "placeholder-actions" },
 };
 
@@ -32,14 +32,14 @@ interface HeaderNotification {
 }
 
 const headerNotifications: HeaderNotification[] = [
-  { id: "ppe-alert", title: "PPE violation detected", description: "George Papadopoulos · Zone A", time: "2 min ago", icon: "alert", tone: "critical" },
-  { id: "device-alert", title: "Worker device battery low", description: "Eleni Kostaki · Warehouse", time: "8 min ago", icon: "battery", tone: "warning" },
-  { id: "report-ready", title: "Compliance report ready", description: "Monthly worksite summary", time: "20 min ago", icon: "check", tone: "success" },
+  { id: "checklist-alert", title: "Task handoff overdue", description: "Jordan Lee · Zone A", time: "2 min ago", icon: "alert", tone: "critical" },
+  { id: "device-alert", title: "Worker device battery low", description: "Casey Rivera · Warehouse", time: "8 min ago", icon: "battery", tone: "warning" },
+  { id: "report-ready", title: "Completion report ready", description: "Sample monthly location summary", time: "20 min ago", icon: "check", tone: "success" },
 ];
 
 type ThemeMode = "light" | "dark";
 
-const THEME_STORAGE_KEY = "safewithcarmen-theme";
+const THEME_STORAGE_KEY = "operations-dashboard-theme";
 
 export default function PageHeader({ variant, eyebrow, title, notificationCount, onBack, statusLabel, actions }: PageHeaderProps) {
   const [notificationAnchor, setNotificationAnchor] = useState<HTMLElement | null>(null);
@@ -81,7 +81,7 @@ export default function PageHeader({ variant, eyebrow, title, notificationCount,
         </div>
       ) : heading}
       <div className={classes.actions}>
-        {statusLabel && <Chip className="live-status" icon={<span className="pulse-dot" />} label={statusLabel} variant="outlined" />}
+        <Chip className="live-status" icon={<span className="pulse-dot" />} label={statusLabel ?? "Demo · Sample data"} variant="outlined" />
         {actions}
         <IconButton
           className="icon-button theme-toggle"
@@ -101,7 +101,7 @@ export default function PageHeader({ variant, eyebrow, title, notificationCount,
           <Icon name="bell" />
           {unreadCount > 0 && <span className="bell-badge">{unreadCount}</span>}
         </IconButton>
-        <div className="mobile-profile profile-avatar">AK</div>
+        <div className="mobile-profile profile-avatar">AM</div>
       </div>
       <Popover
         className="notification-popover"

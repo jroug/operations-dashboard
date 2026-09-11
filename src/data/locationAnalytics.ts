@@ -1,18 +1,18 @@
-/** Mock analytics displayed on the worksite analysis dashboard. */
+/** Mock analytics displayed on the location analysis dashboard. */
 import type {
   AlertSeverityMetric,
-  MonthlyCompliancePoint,
+  MonthlyCompletionPoint,
   RiskZone,
-  WorksiteMetric,
-} from "../components/worksite-analysis/types";
+  LocationMetric,
+} from "../components/location-analytics/types";
 
-export const siteMetrics: WorksiteMetric[] = [
-  { site: "Site A", location: "North Construction Yard", workers: 2, compliance: 81, alerts: 2, critical: 1, risk: "Elevated", color: "#397bde" },
-  { site: "Site B", location: "Riverside Infrastructure", workers: 1, compliance: 95, alerts: 0, critical: 0, risk: "Low", color: "#7557c5" },
-  { site: "Site C", location: "Central Logistics Hub", workers: 1, compliance: 58, alerts: 2, critical: 0, risk: "High", color: "#df725c" },
+export const siteMetrics: LocationMetric[] = [
+  { site: "Site A", location: "North Operations Office", workers: 2, completion: 81, alerts: 2, critical: 1, risk: "Elevated", color: "#6366f1" },
+  { site: "Site B", location: "Riverside Studio", workers: 1, completion: 95, alerts: 0, critical: 0, risk: "Low", color: "#7557c5" },
+  { site: "Site C", location: "Central Distribution Hub", workers: 1, completion: 58, alerts: 2, critical: 0, risk: "High", color: "#df725c" },
 ];
 
-export const monthlyTrends: MonthlyCompliancePoint[] = [
+export const monthlyTrends: MonthlyCompletionPoint[] = [
   { month: "Feb", siteA: 72, siteB: 86, siteC: 63 },
   { month: "Mar", siteA: 75, siteB: 88, siteC: 61 },
   { month: "Apr", siteA: 74, siteB: 91, siteC: 66 },
@@ -31,5 +31,5 @@ export const riskZones: RiskZone[] = [
 export const severityData: AlertSeverityMetric[] = [
   { severity: "Critical", count: 1, color: "#d94a4a" },
   { severity: "High", count: 2, color: "#ce8117" },
-  { severity: "Low", count: 1, color: "#397bde" },
+  { severity: "Low", count: 1, color: "#6366f1" },
 ];

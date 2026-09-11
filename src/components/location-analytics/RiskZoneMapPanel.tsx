@@ -8,8 +8,8 @@ interface RiskZoneMapPanelProps {
 
 export default function RiskZoneMapPanel({ zones }: RiskZoneMapPanelProps) {
   return (
-    <Paper className="worksite-panel risk-map-panel" elevation={0}>
-      <div className="worksite-panel-heading"><div><h2>Risk zone map</h2><p>Incident concentration across operational zones</p></div><span className="map-live"><i />Live</span></div>
+    <Paper className="location-panel risk-map-panel" elevation={0}>
+      <div className="location-panel-heading"><div><h2>Risk zone map</h2><p>Incident concentration across operational zones</p></div><span className="map-live"><i />Demo</span></div>
       <div className="risk-map">
         <div className="map-grid" />
         {zones.map((zone) => (

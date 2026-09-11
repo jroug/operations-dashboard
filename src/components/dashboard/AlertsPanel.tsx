@@ -15,7 +15,7 @@ interface AlertsPanelProps {
 export default function AlertsPanel({ alerts, onAcknowledge }: AlertsPanelProps) {
   return (
     <Paper component="article" className="panel alerts-panel" elevation={0}>
-      <div className="panel-header"><div><h2>Live alerts</h2><p>Prioritised by severity</p></div><Chip className="alert-total" size="small" label={`${alerts.length} active`} /></div>
+      <div className="panel-header"><div><h2>Sample alerts</h2><p>Prioritised by severity</p></div><Chip className="alert-total" size="small" label={`${alerts.length} active`} /></div>
       <div className="alert-list">
         {alerts.map((alert) => <div className={`alert-item ${alert.severity}`} key={alert.id}>
           <div className="alert-line"><span className="severity-icon"><Icon name={alert.severity === "critical" ? "alert" : alert.severity === "high" ? "bell" : "battery"} size={17} /></span><div className="alert-copy"><div><span className={`severity-label ${alert.severity}`}>{alert.severity}</span><time>{alert.time}</time></div><strong>{alert.message}</strong><p>{alert.workerName} · {alert.type}</p></div></div>

@@ -1,11 +1,11 @@
 /** Selects and composes the appropriate static preview route from shared configuration. */
 import { Button, Chip } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import AccidentsContent from "../components/placeholders/AccidentsContent";
+import IncidentsContent from "../components/placeholders/IncidentsContent";
 import PlaceholderSummaryGrid from "../components/placeholders/PlaceholderSummaryGrid";
 import RecommendationsContent from "../components/placeholders/RecommendationsContent";
-import RobotMonitoringContent from "../components/placeholders/RobotMonitoringContent";
-import RoleAnalysisContent from "../components/placeholders/RoleAnalysisContent";
+import AssetMonitoringContent from "../components/placeholders/AssetMonitoringContent";
+import TeamPerformanceContent from "../components/placeholders/TeamPerformanceContent";
 import PageHeader from "../components/PageHeader";
 import { placeholderPageConfig } from "../data/placeholderPages";
 import type { PlaceholderPageType } from "../types/placeholderPages";
@@ -31,10 +31,10 @@ export default function PlaceholderPage({ page }: PlaceholderPageProps) {
       <p className="placeholder-description">{config.description}</p>
       <PlaceholderSummaryGrid cards={config.cards} />
       <section className="placeholder-content-grid">
-        {page === "role-analysis" && <RoleAnalysisContent />}
-        {page === "accidents" && <AccidentsContent />}
-        {page === "robot-monitoring" && <RobotMonitoringContent />}
-        {page === "ai-recommendations" && <RecommendationsContent />}
+        {page === "team-performance" && <TeamPerformanceContent />}
+        {page === "incidents" && <IncidentsContent />}
+        {page === "asset-monitoring" && <AssetMonitoringContent />}
+        {page === "operational-insights" && <RecommendationsContent />}
       </section>
     </div>
   );

@@ -1,4 +1,4 @@
-/** Resolves worksite-specific icon names to shared extracted SVG assets. */
+/** Resolves location-specific icon names to shared extracted SVG assets. */
 import {
   alertTriangleIcon,
   arrowRightIcon,

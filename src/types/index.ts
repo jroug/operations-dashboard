@@ -5,18 +5,18 @@ export interface Worker {
   role: string;
   site: string;
   zone: string;
-  compliant: boolean;
-  complianceScore: number;
-  heartRate: number;
-  fatigue: "low" | "medium" | "high";
+  onTrack: boolean;
+  completionScore: number;
+  utilization: number;
+  workload: "low" | "medium" | "high";
   battery: number;
   connected: boolean;
-  ppe: {
-    helmet: boolean;
-    vest: boolean;
-    gloves: boolean;
-    boots: boolean;
-    glasses: boolean;
+  checklist: {
+    briefing: boolean;
+    access: boolean;
+    handoff: boolean;
+    schedule: boolean;
+    review: boolean;
   };
 }
 
@@ -38,13 +38,13 @@ export interface Incident {
   conditions: {
     weather: string;
     tempC: number;
-    fatigue: string;
-    ppeOk: boolean;
+    workload: string;
+    checklistOk: boolean;
     shift: string;
   };
 }
 
-export interface Robot {
+export interface Asset {
   model: string;
   battery: number;
   mode: string;
@@ -57,15 +57,15 @@ export interface Robot {
   }[];
 }
 
-export interface ComplianceTrendPoint {
+export interface CompletionTrendPoint {
   month: string;
   score: number;
 }
 
-export interface BiometricTrendPoint {
+export interface WorkloadTrendPoint {
   time: string;
-  heartRate: number;
-  fatigue: number;
+  utilization: number;
+  workload: number;
 }
 
 
@@ -79,7 +79,7 @@ export type IconName =
   | "dashboard"
   | "filter"
   | "heart"
-  | "helmet"
+  | "briefing"
   | "location"
   | "moon"
   | "search"

@@ -8,10 +8,10 @@ import type { Worker } from "../types";
 const initials = (name: string) => name.split(" ").map((word) => word[0]).slice(0, 2).join("");
 
 const roleColors: Record<string, string> = {
-  Electrician: "avatar-blue",
-  Inspector: "avatar-violet",
-  Welder: "avatar-amber",
-  "Forklift Operator": "avatar-teal",
+  "Operations Coordinator": "avatar-blue",
+  "Quality Analyst": "avatar-violet",
+  "Project Specialist": "avatar-amber",
+  "Logistics Coordinator": "avatar-teal",
 };
 
 

@@ -1,25 +1,25 @@
-/** View models shared by the worksite analysis page and its chart panels. */
+/** View models shared by the location analysis page and its chart panels. */
 export type SiteName = "All sites" | "Site A" | "Site B" | "Site C";
 
-export interface WorksiteMetric {
+export interface LocationMetric {
   site: string;
   location: string;
   workers: number;
-  compliance: number;
+  completion: number;
   alerts: number;
   critical: number;
   risk: string;
   color: string;
 }
 
-export interface ComplianceComparisonPoint {
+export interface CompletionComparisonPoint {
   name: string;
-  compliance: number;
+  completion: number;
   target: number;
   color: string;
 }
 
-export interface MonthlyCompliancePoint {
+export interface MonthlyCompletionPoint {
   month: string;
   siteA: number;
   siteB: number;

@@ -7,7 +7,7 @@ import {
   brainIcon,
   checkMarkIcon,
   notificationBellIcon,
-  robotIcon,
+  assetIcon,
   trendUpIcon,
   workersGroupIcon,
 } from "../../assets/icons";
@@ -22,7 +22,7 @@ const pageIconAssets: Record<PageIconName, string> = {
   brain: brainIcon,
   chart: barChartIcon,
   check: checkMarkIcon,
-  robot: robotIcon,
+  asset: assetIcon,
   team: workersGroupIcon,
   trend: trendUpIcon,
 };
